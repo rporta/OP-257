@@ -83,10 +83,10 @@ class AdWordsApiController extends Controller
             // Construct an API session configured from a properties file and
             // the OAuth2 credentials above.
             $session =
-                $adWordsSessionBuilder->fromFile(config('app.adsapi_php_path'))
-                    ->withOAuth2Credential($oAuth2Credential)
-                    ->withClientCustomerId($clientCustomerId)
-                    ->build();
+            $adWordsSessionBuilder->fromFile(config('app.adsapi_php_path'))
+            ->withOAuth2Credential($oAuth2Credential)
+            ->withClientCustomerId($clientCustomerId)
+            ->build();
 
             $request->session()->put('selectedFields', $selectedFields);
             $request->session()->put('entriesPerPage', $entriesPerPage);
@@ -138,12 +138,12 @@ class AdWordsApiController extends Controller
         $pageNo
     ) {
         $query = (new ServiceQueryBuilder())
-            ->select($selectedFields)
-            ->orderByAsc('Name')
-            ->limit(
-                ($pageNo - 1) * $entriesPerPage,
-                intval($entriesPerPage)
-            )->build();
+        ->select($selectedFields)
+        ->orderByAsc('Name')
+        ->limit(
+            ($pageNo - 1) * $entriesPerPage,
+            intval($entriesPerPage)
+        )->build();
 
         $totalNumEntries = 0;
         $results = [];
@@ -206,10 +206,10 @@ class AdWordsApiController extends Controller
             // Construct an API session configured from a properties file and
             // the OAuth2 credentials above.
             $session =
-                $adWordsSessionBuilder->fromFile(config('app.adsapi_php_path'))
-                    ->withOAuth2Credential($oAuth2Credential)
-                    ->withClientCustomerId($clientCustomerId)
-                    ->build();
+            $adWordsSessionBuilder->fromFile(config('app.adsapi_php_path'))
+            ->withOAuth2Credential($oAuth2Credential)
+            ->withClientCustomerId($clientCustomerId)
+            ->build();
 
             // There is no paging mechanism for reporting, so we fetch all
             // results at once.
@@ -261,14 +261,14 @@ class AdWordsApiController extends Controller
         array $selectedFields
     ) {
         $query = (new ReportQueryBuilder())
-            ->select($selectedFields)
-            ->from($reportType)
-            ->duringDateRange($reportRange)->build();
+        ->select($selectedFields)
+        ->from($reportType)
+        ->duringDateRange($reportRange)->build();
 
         // For brevity, this sample app always excludes zero-impression rows.
         $reportSettingsOverride = (new ReportSettingsBuilder())
-            ->includeZeroImpressions(false)
-            ->build();
+        ->includeZeroImpressions(false)
+        ->build();
         $reportDownloadResult = $reportDownloader->downloadReportWithAwql(
             "$query",
             DownloadFormat::XML,

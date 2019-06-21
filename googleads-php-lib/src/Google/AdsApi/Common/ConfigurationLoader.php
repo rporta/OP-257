@@ -38,8 +38,8 @@ final class ConfigurationLoader
         EnvironmentalVariables $environmentalVariables = null
     ) {
         $this->environmentalVariables =
-            $environmentalVariables === null ? new EnvironmentalVariables()
-                : $environmentalVariables;
+        $environmentalVariables === null ? new EnvironmentalVariables()
+        : $environmentalVariables;
     }
 
     /**
@@ -60,7 +60,7 @@ final class ConfigurationLoader
             try {
                 $home = $this->environmentalVariables->getHome();
                 $homeConfigIniFilePath =
-                    $home . DIRECTORY_SEPARATOR . pathinfo($configIniFilePath, PATHINFO_BASENAME);
+                $home . DIRECTORY_SEPARATOR . pathinfo($configIniFilePath, PATHINFO_BASENAME);
                 if (file_exists($homeConfigIniFilePath)) {
                     $configIniFilePath = $homeConfigIniFilePath;
                 } else {
@@ -83,6 +83,25 @@ final class ConfigurationLoader
                 );
             }
         }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return new Configuration(parse_ini_file($configIniFilePath, true));
     }

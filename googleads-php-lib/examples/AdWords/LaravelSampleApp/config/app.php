@@ -219,6 +219,6 @@ return [
 
     ],
 
-    'adsapi_php_path' => realpath(base_path('adsapi_php.ini'))
+    'adsapi_php_path' => '/home/ramiro/adsapi_php.ini'
 
 ];
