@@ -85,7 +85,7 @@ class UploadOfflineConversions
         );
     }
 
-    public static function main()
+    public static function main($conversion_name, $gclid, $conversion_time, $conversion_value)
     {
         // Generate a refreshable OAuth2 credential for authentication.
         $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile()->build();
@@ -96,12 +96,39 @@ class UploadOfflineConversions
         self::runExample(
             new AdWordsServices(),
             $session,
-            self::CONVERSION_NAME,
-            self::GCLID,
-            self::CONVERSION_TIME,
-            floatval(self::CONVERSION_VALUE)
+            $conversion_name,
+            $gclid,
+            $conversion_time,
+            floatval($conversion_value)
         );
+    }
+    /**
+     * RAMIRO PORTAS 
+     * [processCsv description] : Se encarga de abrir un archivo csv, recorrer los registros y pasarlos por la funcion main
+     * @return [void] [description] : 
+     */
+    public static function processCsv(){
+        /*debe recorrer */
+        // 
+
+        if (($fileCsv = fopen("/home/ramiro/Escritorio/data.csv", "r")) !== FALSE) {
+            $currentRecord = 1;
+            while (($datos = fgetcsv($fileCsv, 1000, ",")) !== FALSE) {
+                $conversion_name = $datos[0];
+                $gclid = $datos[1];
+                $conversion_time = $datos[2];
+                $conversion_value = $datos[3];
+                
+                $regLog = "\nregistro n° {$currentRecord} : \n"."conversion_name : {$conversion_name}, gclid : {$gclid}, conversion_time : {$conversion_time}, conversion_value : {$conversion_value} \n\n";
+                echo $regLog;
+                
+                self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
+
+                $currentRecord++;
+            }
+            fclose($fileCsv);
+        }
     }
 }
 
-UploadOfflineConversions::main();
+UploadOfflineConversions::processCsv();
