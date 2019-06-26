@@ -25,4 +25,11 @@ Fecha de creación : 27 may. 2019 11:53:56
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 No hay un vínculo entre la cuenta del administrador autenticada en la solicitud y la cuenta del cliente especificada en los encabezados.
 
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+OP-371
 
+Crear controlador para generar el csv con la info necesaria para la conversión offline de google y la ejecución del proceso de carga contra la API de Google.
+
+Ruta de trabajo: hera:/var/scripts/pixelNotification/dev1/
+
+Ruta donde subir la api de google: hera:/var/scripts/googleOfflineConvertions/

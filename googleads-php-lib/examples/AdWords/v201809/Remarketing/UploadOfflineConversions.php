@@ -142,6 +142,36 @@ class UploadOfflineConversions
             fclose($fileCsv);
         }
     }
+
+
+
+    /**
+     * RAMIRO PORTAS
+     * [populeCSV description] : Se encarga de cargar una fila a un archivo csv 
+     * @param  [array] $data [description] Array 2D, 2D:Array(#lf) 
+     * @return [void]       [description]
+     * #lf : $conversion_name, $gclid, $conversion_time, $conversion_value)
+     */
+    public static function populeCSV($data){
+        $lista = array();
+        foreach ($data as $i => $v) {
+            $lista[] = $v; //Array($conversion_name, $gclid, $conversion_time, $conversion_value)
+        }
+        $fp = fopen(self::getPathCsv(), 'w');
+        foreach ($lista as $campos) {
+            fputcsv($fp, $campos);
+        }
+        fclose($fp);
+    }
 }
+
 // UploadOfflineConversions::setPathCsv("/home/ramiro/Escritorio/data.csv");
+// UploadOfflineConversions::processCsv();
+
+$test = array();
+$test[] = array("conversion_name(1)", "gclid", "conversion_time", "conversion_value");
+$test[] = array("conversion_name(2)", "gclid", "conversion_time", "conversion_value");
+$test[] = array("conversion_name(3)", "gclid", "conversion_time", "conversion_value");
+$test[] = array("conversion_name(4)", "gclid", "conversion_time", "conversion_value");
+UploadOfflineConversions::populeCSV($test);
 UploadOfflineConversions::processCsv();
