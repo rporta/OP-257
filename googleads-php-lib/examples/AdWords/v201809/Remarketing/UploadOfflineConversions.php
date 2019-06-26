@@ -41,6 +41,8 @@ class UploadOfflineConversions
     const CONVERSION_TIME = 'INSERT_CONVERSION_TIME_HERE';
     const CONVERSION_VALUE = 'INSERT_CONVERSION_VALUE_HERE';
 
+    public static $pathCsv = "/home/ramiro/Escritorio/data.csv"; 
+
     public static function runExample(
         AdWordsServices $adWordsServices,
         AdWordsSession $session,
@@ -102,6 +104,15 @@ class UploadOfflineConversions
             floatval($conversion_value)
         );
     }
+
+    public static function setPathCsv($pathCsv){
+        self::$pathCsv = $pathCsv;
+    }
+
+    public static function getPathCsv(){
+        return self::$pathCsv;
+    }
+
     /**
      * RAMIRO PORTAS 
      * [processCsv description] : Se encarga de abrir un archivo csv, recorrer los registros y pasarlos por la funcion main
@@ -111,18 +122,20 @@ class UploadOfflineConversions
         /*debe recorrer */
         // 
 
-        if (($fileCsv = fopen("/home/ramiro/Escritorio/data.csv", "r")) !== FALSE) {
+        if (($fileCsv = fopen(self::getPathCsv(), "r")) !== FALSE) {
             $currentRecord = 1;
             while (($datos = fgetcsv($fileCsv, 1000, ",")) !== FALSE) {
+                
                 $conversion_name = $datos[0];
-                $gclid = $datos[1];
+                $gclid = $datos[1]; //String
                 $conversion_time = $datos[2];
                 $conversion_value = $datos[3];
                 
                 $regLog = "\nregistro n° {$currentRecord} : \n"."conversion_name : {$conversion_name}, gclid : {$gclid}, conversion_time : {$conversion_time}, conversion_value : {$conversion_value} \n\n";
                 echo $regLog;
                 
-                self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
+                //resolve google gclick
+                // self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
 
                 $currentRecord++;
             }
@@ -130,5 +143,5 @@ class UploadOfflineConversions
         }
     }
 }
-
+// UploadOfflineConversions::setPathCsv("/home/ramiro/Escritorio/data.csv");
 UploadOfflineConversions::processCsv();
