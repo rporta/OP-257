@@ -131,11 +131,11 @@ class UploadOfflineConversions
                 $conversion_time = $datos[2];
                 $conversion_value = $datos[3];
                 
-                $regLog = "\nregistro n° {$currentRecord} : \n"."conversion_name : {$conversion_name}, gclid : {$gclid}, conversion_time : {$conversion_time}, conversion_value : {$conversion_value} \n\n";
+                $regLog = "\nregistro n° {$currentRecord} : \n"."\tconversion_name : {$conversion_name},\n\tgclid : {$gclid},\n\tconversion_time : {$conversion_time},\n\tconversion_value : {$conversion_value} \n\n";
                 echo $regLog;
                 
                 //resolve google gclick
-                // self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
+                self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
 
                 $currentRecord++;
             }
@@ -164,14 +164,4 @@ class UploadOfflineConversions
         fclose($fp);
     }
 }
-
-// UploadOfflineConversions::setPathCsv("/home/ramiro/Escritorio/data.csv");
-// UploadOfflineConversions::processCsv();
-
-$test = array();
-$test[] = array("conversion_name(1)", "gclid", "conversion_time", "conversion_value");
-$test[] = array("conversion_name(2)", "gclid", "conversion_time", "conversion_value");
-$test[] = array("conversion_name(3)", "gclid", "conversion_time", "conversion_value");
-$test[] = array("conversion_name(4)", "gclid", "conversion_time", "conversion_value");
-UploadOfflineConversions::populeCSV($test);
 UploadOfflineConversions::processCsv();
