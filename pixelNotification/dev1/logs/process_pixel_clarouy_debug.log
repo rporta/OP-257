@@ -1,0 +1,8 @@
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Google::__construct Request to Google: Pixel:   | Pub:  "
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Pixel Log saved for Msisdn:59897726318 | MedioId: 482 | PaqueteId: 804"
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::deletePresubscription Starting."
+[2019-06-28 16:57:03] 5d16710de3dc8 REGULAR DEBUG - "Notification::deletePresubscription Ending."

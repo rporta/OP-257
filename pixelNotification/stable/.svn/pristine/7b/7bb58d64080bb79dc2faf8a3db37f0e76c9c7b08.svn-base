@@ -1,0 +1,28 @@
+{
+    "Db": {
+        "sqlServer": {
+            "dsn": "dblib:host=Zeus;dbname=",
+            "host": "zeus",
+            "user": "sa",
+            "pass": "millonarios",
+            "schema_center": "OpratelCenter"
+        }
+	},
+	"adNetworks": {
+	    "48": {
+	        "network": "mobusi",
+	        "url": "http://pixel.leadzu.com/pixel.php?service=1095&hash="
+	    },
+	    "51": {
+	        "network": "globadlity",
+	        "url": "http://ad.globadlity.com/wss2s.asmx/ConfirmS2S?trx_id="
+	    },
+	    "56": {
+	        "network": "billy",
+	        "url": "http://trk.billysrv.com/conversion.php?vId="
+	    }
+	},
+	"debug": 1,
+	"maxInstances": 1,
+	"checkUltimoCobro": [45, 48]
+}

@@ -1,0 +1,47 @@
+{
+    "Db": {
+        "sqlServer": {
+            "dsn": "dblib:host=Zeus;dbname=",
+            "host": "zeus",
+            "user": "sa",
+            "pass": "millonarios",
+            "schema_center": "OpratelCenter"
+        }
+    },
+    "include_files": ["sponsor.json"],
+    "adNetworks": {
+        "48": {
+            "network": "mobusi",
+            "url": "http://pixel.leadzu.com/pixel.php?service=1095&hash={click_id}&publisher={pub_id}"
+        },
+        "51": {
+            "network": "globadlity",
+            "url": "http://ad.globadlity.com/wss2s.asmx/ConfirmS2S?trx_id="
+        },
+        "56": {
+            "network": "billy",
+            "url": "http://trk.billysrv.com/conversion.php?vId="
+        },
+        "61": {
+            "network": "vasbooster",
+            "url": "http://callback.mobileboost.me/callback.php?ukey="
+        },
+        "65": {
+            "network": "alfaconvert",
+            "url": "https://trck4.zirmedia.com/track/hash?hash="
+        },
+    	"67": {
+    	    "network": "kimia",
+    	    "url": "http://sign.route-conversion.com/conversion_get/pixel.jpg?kp="
+    	},
+        "68": {
+            "network": "spiroox",
+            "url": "http://track.brucelead.com/gpxs.php?PID=792&STAGE=1&CID_SPX={click_id}&ID_LEAD={click_id}"
+        }
+    },
+    "debug": 1,
+    "maxInstances": 1,
+    "checkUltimoCobro": [16, 45, 48],
+    "instanceName": ["Regular", "Billed"],
+    "overrideMDS": { }
+}

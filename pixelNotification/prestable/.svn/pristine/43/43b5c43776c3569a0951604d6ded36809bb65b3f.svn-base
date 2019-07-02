@@ -1,0 +1,61 @@
+<?php
+/**
+ * Este fichero contiene la clase Spiroox
+ *
+ * @category Web_Service
+ * @package  PixelNotification
+ * @author   Opratel <info@opratel.com>
+ * @license  [url] [description]
+ * @version  1
+ * @link     http://www.opratel.com
+ */
+
+require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+
+/**
+ * Spiroox
+ *
+ * @category Web_Service
+ * @package  PixelNotification
+ * @author   Opratel <info@opratel.com>
+ * @license  [url] [description]
+ * @version  1
+ * @link     http://www.opratel.com
+ */
+class Spiroox
+{
+    public $result;
+
+    /**
+     * Constructor
+     *
+     * @param int $msisdn Msisdn
+     * @param int $pixel  Pixel
+     *
+     * @return void
+     */
+    public function __construct($msisdn, $pixel)
+    {
+        $this->logger = logger::getInstance();
+        $this->config = configJson::getInstance();
+        $this->debug = $this->config->get('debug');
+
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Request to Spiroox: Pixel: ' . $pixel , 'debug');
+        }
+
+        $response = file_get_contents(str_replace('{click_id}', $pixel, $this->config->get('adNetworks.68.url')));
+        $return = false;
+
+        if ($response === false) {
+            $this->logger->write('Hit Spiroox Msisdn: ' . $msisdn . ' | Pixel : ' . $pixel . ' | Response: No response', 'info');
+            $return = 'No response';
+        } else {
+            $this->logger->write('Hit Spiroox Msisdn: ' . $msisdn . ' | Pixel : ' . $pixel . ' | Response: OK' , 'info');
+            $return = 'OK';
+        }
+
+        $this->result = $return;
+    }
+}

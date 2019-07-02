@@ -1,0 +1,88 @@
+{
+    "Db": {
+        "sqlServer": {
+            "dsn": "dblib:host=Zeus;dbname=",
+            "host": "zeus",
+            "user": "sa",
+            "pass": "millonarios",
+            "schema_center": "OpratelCenter"
+        },
+        "redis": {
+            "pixel": {
+                "host": "hera",
+                "port": 6379,
+                "database": 1
+            }
+        }
+    },
+    "include_files": ["sponsor.json"],
+    "adNetworks": {
+        "48": {
+            "network": "mobusi",
+            "url": "http://pixel.leadzu.com/pixel.php?service=1095&hash={click_id}&publisher={pub_id}"
+        },
+        "51": {
+            "network": "globadlity",
+            "url": "http://ad.globadlity.com/wss2s.asmx/ConfirmS2S?trx_id="
+        },
+        "56": {
+            "network": "billy",
+            "url": "http://trk.billysrv.com/conversion.php?vId="
+        },
+        "61": {
+            "network": "vasbooster",
+            "url": "http://callback.mobileboost.me/callback.php?ukey="
+        },
+        "65": {
+            "network": "alfaconvert",
+            "url": "http://track.alfa-serv.com/track/hash?hash="
+        },
+    	"67": {
+    	    "network": "kimia",
+    	    "url": "http://sign.route-conversion.com/conversion_get/pixel.jpg?kp="
+    	},
+        "68": {
+            "network": "spiroox",
+            "url": "http://track.brucelead.com/gpxs.php?PID=792&STAGE=1&CID_SPX={click_id}&ID_LEAD={click_id}"
+        },
+        "70": {
+            "network": "logan",
+            "url": "http://tracker.loganmedia.mobi/track/e?transaction_id={click_id}&event_type=conversion"
+        },
+        "72": {
+            "network": "mobrain",
+            "url": "https://lead.mobra.in/{clickid_macro}?token=3f81932"
+        },
+        "73": {
+            "network": "rekket",
+            "url": "http://cl.l5x.us/conversions?advertiser_id=SMSamericas&subid={subid}"
+        },
+        "74": {
+            "network": "bonapartte",
+            "urlOld": "http://track.bonaoffers1.com/postback?cid={REPLACE}",
+            "url": "http://offers.bonapartte.affise.com/postback?clickid={REPLACE}"
+        },
+        "75": {
+            "network": "mobipium",
+            "url": "http://mobipiumlink.com/conversion/index.php?jp={aff_sub}"
+        },
+        "77": {
+            "network": "gameofads",
+            "url": "http://gameofads.com/pixel.php?pixel={click_id}"
+        },
+        "78": {
+            "network": "tmclicks",
+            "__urlComment": "no hay que notificar",
+            "url": ""
+        },
+        "80": {
+            "network": "traffic",
+            "url": "https://postback.level23.nl/?currency=USD&handler=10209&hash=3ce3df61b3efa8b41d3d4fc2da24d48c&tracker={click_id}&payout={payout}"
+        }
+    },
+    "debug": 1,
+    "maxInstances": 1,
+    "checkUltimoCobro": [2,6,7,11,13,14,16,17,20,22,23,24,34,37,45,48,53],
+    "instanceName": ["Regular", "Billed"],
+    "overrideMDS": { }
+}

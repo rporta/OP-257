@@ -1,0 +1,236 @@
+<?php
+/**
+ * Class Notification
+ *
+ * @category Process
+ * @package  AdNetworks
+ * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
+ * @license  http://www.opratel.com Opratel
+ * @link     http://www.opratel.com Opratel
+ */
+require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+require_once '/var/www/html/oprafwk/lib/db/db.class.php';
+/**
+ * Class Notification
+ *
+ * @category Process
+ * @package  AdNetworks
+ * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
+ * @license  http://www.opratel.com Opratel
+ * @link     http://www.opratel.com Opratel
+ */
+class Notification
+{
+    /**
+     * [__construct description]
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->logger = logger::getInstance();
+        $this->config = configJson::getInstance();
+
+        $this->db = new db(
+            $this->config->get('Db.sqlServer.dsn') . $this->config->get('Db.sqlServer.schema_center'),
+            $this->config->get('Db.sqlServer.user'),
+            $this->config->get('Db.sqlServer.pass')
+        );
+
+        $this->debug = $this->config->get('debug');
+    }
+
+    /**
+     * [processNotifications description]
+     *
+     * @param boolean $checkUltimoCobro Traer usuarios con cobro de hoy, o no
+     *
+     * @return void
+     */
+    public function processNotifications($checkUltimoCobro)
+    {
+        $presubscriptions = $this->getPresubscriptions($checkUltimoCobro);
+        $title = ($checkUltimoCobro) ? 'BILLED' : 'REGULAR';
+        $this->logger->setTitle($title);
+        $this->logger->write('Pooling presubscriptions. Rows pooled: ' . count($presubscriptions), 'info');
+        if (count($presubscriptions)) {
+            foreach ($presubscriptions as $presubscription) {
+                $logText = 'Processing PresuscripcionId: ' . $presubscription->PresuscripcionId;
+                $logText .= ' | SponsorId: ' . $presubscription->SponsorId . ' | Msisdn: ' . $presubscription->Origen;
+                $logText .= ' | PaqueteId: ' . $presubscription->PaqueteId . ' | MedioId: ' . $presubscription->MedioId;
+                $logText .= ' | AdNetwork: ' . $this->config->get('adNetworks.' . $presubscription->AdNetwork . '.network');
+                $logText .= ' | Pixel: ' . $presubscription->Pixel;
+                if ($presubscription->Pub) {
+                    $logText .=  ' | Pub: ' . $presubscription->Pub;
+                }
+                $this->logger->write($logText, 'info');
+
+                $this->deletePresubscription($presubscription->PresuscripcionId);
+
+                $sendPixel = $this->sendPixelClick($presubscription);
+                if ($sendPixel && $sendPixel->result !== false) {
+                    $this->savePixel($presubscription, $sendPixel->result);
+                }
+            }
+        }
+        $this->logger->write('Finishing process.', 'info');
+
+    }
+
+    /**
+     * sendPixelClick
+     *
+     * @param object $presubscription Presuscripcion data
+     *
+     * @return mixed result or false
+     */
+    protected function sendPixelClick($presubscription)
+    {
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Starting.', 'debug');
+        }
+
+        $config = $this->config->get('adNetworks.' . $presubscription->AdNetwork);
+        if (!$config) {
+            $this->logger->write(__METHOD__ . ' Config for AdNetwork ' . $presubscription->AdNetwork . 'not set', 'error');
+            return false;
+        }
+
+        include_once  __DIR__ . '/'. $config['network']. '.class.php';
+        if (!class_exists(ucfirst($config['network']))) {
+            $this->logger->write(__METHOD__ . ' Class ' . ucfirst($config['network']) . 'missing', 'error');
+            return false;
+        }
+
+        $class = ucfirst($config['network']);
+        $process = new $class($presubscription->Origen, $presubscription->Pixel);
+
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Ending.', 'debug');
+        }
+        return $process;
+    }
+
+    /**
+     * getPresubscriptions
+     *
+     * @param boolean $checkUltimoCobro Chequear o no último cobro
+     *
+     * @return mixed - object or false
+     */
+    public function getPresubscriptions($checkUltimoCobro)
+    {
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Starting.', 'debug');
+        }
+        $resultSet = [];
+
+
+         $sql = <<<EOQ
+            EXEC OpratelInfo.dbo.sp_Select_Presuscripcion_Usuarios_Suscriptos @SponsorsList = :sponsorsList, @UltimoCobro = :ultimoCobro
+EOQ;
+
+        $sponsorsUltimoCobro = $this->config->get('checkUltimoCobro');
+        $sponsorsUltimoCobro = array_flip($sponsorsUltimoCobro); // revertimos key y valor. necesitamos los valores para usar como key en el xml
+        $xml = new SimpleXMLElement('<ids/>');
+        foreach ($sponsorsUltimoCobro as $key => $dummy) {
+            $sponsorsUltimoCobro[$key] = 'id'; // seteamos 'id' como valor de todas las key (que son realmente los valores de sponsor)
+        }
+        array_walk($sponsorsUltimoCobro, array($xml, 'addChild'));
+
+        $this->db->prepare($sql);
+        $aBindings = [
+            ':sponsorsList'   => $xml->asXML(),
+            ':ultimoCobro' => $checkUltimoCobro
+        ];
+
+        try {
+            $result = $this->db->executeWithBindings($aBindings);
+
+            if ($result) {
+                $resultSet = $this->db->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (Exception $e) {
+            $logger->write(__METHOD__ . "EXCEPTION. query: " . $e->getMessage(), 'error');
+        }
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Ending.', 'debug');
+        }
+        return $resultSet;
+    }
+
+    /**
+     * [savePixel description]
+     *
+     * @param stdClass $presubscription Presuscripcion Object
+     * @param string   $result          Result
+     *
+     * @return void
+     */
+    public function savePixel($presubscription, $result)
+    {
+        $exec = false;
+        try {
+            $query = <<<EOQ
+                EXEC OpratelConsulta.dbo.sp_Insert_PixelLog
+                    @Origen = :origen
+                    ,@SponsorId = :sponsorId
+                    ,@Portal = :portal
+                    ,@MedioId = :medioId
+                    ,@Pixel = :pixel
+                    ,@Adservice = :adservice
+                    ,@Action = :action
+                    ,@Result = :result
+                    ,@MedioSuscripcionId = :medioSuscripcionId
+                    ,@PaqueteId = :paqueteId
+                    ,@Pub = :pub
+
+EOQ;
+            $aBindings = [
+                ':origen' => $presubscription->Origen,
+                ':sponsorId' => $presubscription->SponsorId,
+                ':portal' => $presubscription->Portal,
+                ':medioId' => $presubscription->MedioId,
+                ':pixel' => $presubscription->Pixel,
+                ':adservice' => $presubscription->AdNetwork,
+                ':action' => 'sendPixel',
+                ':result' => $result,
+                ':medioSuscripcionId' => $presubscription->MedioSuscripcionId,
+                ':paqueteId' => $presubscription->PaqueteId,
+                ':pub' => $presubscription->Pub
+            ];
+
+            $this->db->prepare($query);
+            $execution = $this->db->executeWithBindings($aBindings);
+            if ($execution) {
+                $this->logger->write('Pixel Log saved for Msisdn:' . $presubscription->Origen . ' | MedioId: ' . $presubscription->MedioId . ' | PaqueteId: ' .$presubscription->PaqueteId, 'info');
+            } else {
+                $this->logger->write(__METHOD__ . ' Error while executing savePixel query to DB', 'error');
+            }
+        } catch (\Exception $e) {
+            $this->logger->write(__METHOD__ . ' Error inserting query '. $query .' into SQL: ' . $e->getMessage(), 'error');
+            $this->logger->write(__METHOD__ . ' Data: ' . json_encode($aBindings), 'error');
+        }
+        return $execution;
+    }
+
+    /**
+     * [deletePresubscription description]
+     * 
+     * @param integer $presubscriptionId PresuscripcionId
+     * 
+     * @return void
+     */
+    public function deletePresubscription($presubscriptionId)
+    {
+        // we have a record to return. we delete it from DB
+        $query = <<<EOQ
+            DELETE FROM OpratelInfo.dbo.Presuscripcion
+                WHERE PresuscripcionId = :presuscripcionId
+EOQ;
+        $prep =$this->db->prepare($query);
+        $execution = $this->db->executeWithBindings([':presuscripcionId' => $presubscriptionId]);
+    }
+
+}

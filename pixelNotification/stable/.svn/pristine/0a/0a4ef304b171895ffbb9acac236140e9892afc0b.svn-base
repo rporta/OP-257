@@ -1,0 +1,66 @@
+{
+    "Db": {
+        "sqlServer": {
+            "dsn": "dblib:host=Zeus;dbname=",
+            "host": "zeus",
+            "user": "sa",
+            "pass": "millonarios",
+            "schema_center": "OpratelCenter"
+        }
+	},
+	"adNetworks": {
+	    "48": {
+	        "network": "mobusi",
+	        "url": "http://pixel.leadzu.com/pixel.php?service=1095&hash="
+	    },
+	    "51": {
+	        "network": "globadlity",
+	        "url": "http://ad.globadlity.com/wss2s.asmx/ConfirmS2S?trx_id="
+	    },
+	    "56": {
+	        "network": "billy",
+	        "url": "http://trk.billysrv.com/conversion.php?vId="
+	    }
+	},
+	"debug": 1,
+	"maxInstances": 1,
+	"notificationDelay": {
+		"default": 0,
+		"45": 30
+	},
+	"sponsor": {
+		"claroni": {
+			"sponsorId": "6"
+		},
+		"clarohn": {
+			"sponsorId": "7"
+		},
+		"claropr": {
+			"sponsorId": "8"
+		},
+		"clarogt": {
+			"sponsorId": "11"
+		},
+		"clarosv": {
+			"sponsorId": "14"
+		},
+		"clarouy": {
+			"sponsorId": "17"
+		},
+		"claroec": {
+			"sponsorId": "24"
+		},
+		"clarodo": {
+			"sponsorId": "29"
+		},
+		"claropa": {
+			"sponsorId": "32"
+		},
+		"clarocr": {
+			"sponsorId": "37"
+		},
+		"claropy": {
+			"sponsorId": "45"
+		}
+	}
+}

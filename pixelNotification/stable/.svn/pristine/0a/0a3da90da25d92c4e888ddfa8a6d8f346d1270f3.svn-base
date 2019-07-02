@@ -1,0 +1,77 @@
+<?php
+/**
+ * Este fichero contiene la clase MOBrain
+ *
+ * @category Web_Service
+ * @package  PixelNotification
+ * @author   Opratel <info@opratel.com>
+ * @license  [url] [description]
+ * @version  1
+ * @link     http://www.opratel.com
+ */
+
+require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+
+/**
+ * Spiroox
+ *
+ * @category Web_Service
+ * @package  PixelNotification
+ * @author   Opratel <info@opratel.com>
+ * @license  [url] [description]
+ * @version  1
+ * @link     http://www.opratel.com
+ */
+class MOBrain
+{
+    public $result;
+
+    /**
+     * Constructor
+     *
+     * @param int $msisdn Msisdn
+     * @param int $pixel  Pixel
+     * @param int $pub    Pub
+     *
+     * @return void
+     */
+    public function __construct($msisdn, $pixel, $pub)
+    {
+        $this->logger = logger::getInstance();
+        $this->config = configJson::getInstance();
+        $this->debug = $this->config->get('debug');
+
+        if ($this->debug) {
+            $this->logger->write(__METHOD__ . ' Request to MOBrain: Pixel: ' . $pixel , 'debug');
+        }
+        $opts = [
+            "http" => [
+            "method" => "GET",
+            "header" => "ACCEPT: text/application\r\n"
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $response = file_get_contents(str_replace('{clickid_macro}', $pixel, $this->config->get('adNetworks.72.url')), false, $context);
+        $return = false;
+
+        if ($response === false) {
+
+            $this->logger->write('Response: '.$http_response_header[0] , 'ERROR');
+            $return = $http_response_header[0];
+        } else {
+            if ($this->debug) {
+                $this->logger->write(__METHOD__ . ' Response from MOBrain: ' . var_export($response, true), 'debug');
+            }
+            if ($response == "OK") {
+                $this->logger->write('Hit MOBrain Msisdn: ' . $msisdn . ' | clickid_macro : ' . $pixel . ' | Response: OK', 'info');
+                    $return = 'OK';
+            } else {
+                 $this->logger->write('Hit MOBrain Msisdn: ' . $msisdn . ' | clickid_macro : ' . $pixel . ' | Response: ERROR: ' . $response, 'info');
+                    $return = $response;
+            }
+        }
+
+        $this->result = $return;
+    }
+}

@@ -1,0 +1,41 @@
+<?php
+/**
+ * Process pixel notifications
+ *
+ * @category Web_Service
+ * @package  AdNetworks
+ * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
+ * @license  http://www.opratel.com Opratel
+ * @link     http://www.opratel.com Opratel
+ */
+require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+require_once __DIR__ . '/class/notification.class.php';
+
+
+$logger = logger::getInstance();
+$logger->setSessionId(uniqid());
+$logger->setPath(__DIR__ .'/logs/');
+$logger->setFileNamePrefix('process_pixel');
+
+$config = configJson::getInstance();
+$config->setConfigFile(__DIR__.'/config/config.json');
+
+if (count($argv) == 1) {
+    exit("Missing params\nUsage: php notify.php [sponsorCode]\n");
+}
+$sponsorCode = filter_var($argv[1], FILTER_SANITIZE_STRING);
+if (!$config->get('sponsor.'. $sponsorCode)) {
+    $logger->write('Wrong sponsorCode: ' . $sponsorCode, 'error');
+    exit("Wrong sponsorCode");
+}
+
+$runningInstances = `ps ax | grep '/usr/bin/php' | grep 'pixelNotificationProcess.php {$sponsorCode}' | grep -v grep | grep -v Ss | wc -l`;
+
+if ($runningInstances > $config->get('maxInstances')) {
+    $logger->write('The limit of max simultaneous run has reached: ' . $runningInstances, 'info');
+} else {
+    $notificationObj = new Notification($sponsorCode);
+    $notificationObj->processNotifications();
+}
+

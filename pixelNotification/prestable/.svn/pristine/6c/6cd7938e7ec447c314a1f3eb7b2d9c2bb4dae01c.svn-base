@@ -1,0 +1,162 @@
+<?php
+
+/**
+* DB Class handler
+* @uses PDO
+*/
+class db {
+
+  private $data_source_name;
+  private $error;
+  private $instance;
+  private $logger;
+  private $password;
+  private $query;
+  private $statement;
+  private $sth;
+  private $username;
+
+/**
+* Stablish PDO connection to DB
+* @param string $dsn
+* @param string $username
+* @param string $password
+*/   
+public function __construct($dsn, $username, $password)
+{
+  $this->data_source_name = $dsn;
+  $this->username = $username;
+  $this->password = $password;
+  $this->logger = logger::getInstance();
+
+  $connection = false;
+
+  try {
+    $this->instance = new PDO($this->data_source_name, $this->username, $this->password);
+    $connection = true;
+} catch (PDOException $e) {
+    echo "Could not connect to DB. $this->data_source_name. [Message]".$e->getMessage();
+    $this->logger->write( "Could not connect to DB. $this->data_source_name. [Message]".$e->getMessage(), 'error' );
+}
+
+return $connection;
+}
+
+/**
+* Execute query statement
+* @param string $query
+* @return bool
+*/
+public function query($query){
+
+  $this->query = $query;
+  $this->quote($this->query);
+  $this->pdostatement = $this->instance->query($query);
+
+  $result = false;
+
+  if(is_object($this->pdostatement)){
+    $result = true;
+} else {
+    $this->error = $this->instance->errorInfo();
+    $this->errorMsg = $this->error[2];
+    $this->logger->write( 'Query execution failed. [Query]'."\t".$this->query.'[Message]'.$this->errorMsg, 'error' );
+}
+
+return $result;
+}
+
+/**
+* Quotes a string for use in a query
+* @param string string
+* @return void
+*/
+public function quote($string){
+  $this->instance->quote($string);
+}
+
+/**
+* Prepares a statement for execution
+* @param string $statement
+* @param array $options
+*/
+public function prepare($statement, $options = array()){
+
+  $this->statement = $statement;
+  $this->sth = $this->instance->prepare($this->statement, $options);
+
+  $result = false;
+
+  if(is_object($this->sth)){
+    $result = $this->sth;
+} else {
+    $this->error = $this->instance->errorInfo();
+    $this->errorMsg = $this->error[2];
+    $this->logger->write( 'Statement preparation failed. [Statement]'."\t".$this->statement.'[Message]'.$this->errorMsg, 'error' );
+}
+return $result;
+}
+
+/**
+* Execute SQL statement
+* @return result
+*/
+public function execute(){
+
+  $result = $this->sth->execute(); 
+
+  return $result;
+}
+
+public function fetch($fetch_style = ''){
+
+  $this->result = $this->sth->fetchAll($fetch_style);
+
+  return $this->result;
+}
+
+public function setUsername($username){
+  $this->username = $username;
+}
+
+public function setPassword($password){
+  $this->password = $password;
+}
+
+public function setData_source_name($dsn){
+  $this->data_source_name = $dsn;
+}
+
+public function getPdoStatement(){
+  return $this->pdostatement;
+}
+
+public function getError(){
+  return $this->error;
+}
+
+public function getErrorMsg(){
+  return $this->errorMsg;
+}
+
+/**
+* Execute SQL statement
+*
+* @param array $aBindings Array con los bindings de la sentencia
+* @example $aBindings = array(':key'=>'value');
+* 
+* @return result
+*/
+public function executeWithBindings($aBindings){
+
+  if (is_array($aBindings) && count($aBindings)) {
+    $result = $this->sth->execute($aBindings); 
+    return $result;
+}
+// si no venía array de bindings no hacemos nada
+return false;
+}
+}
+
+
+?>
