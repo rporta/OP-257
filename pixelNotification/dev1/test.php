@@ -1,42 +1,27 @@
 <?php
-/**
- * Process pixel notifications
- *
- * @category Process
- * @package  AdNetworks
- * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
- * @license  http://www.opratel.com Opratel
- * @link     http://www.opratel.com Opratel
- */
-require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
-require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
-require_once __DIR__ . '/class/notification.class.php';
-require_once __DIR__ . '/class/tmclicks.class.php';
+$path = getcwd();
+
+include_once "utils/xbug/xbug.php";
+include_once "utils/dirbase/folderFile.php";
+include_once "utils/dirbase/folder.php";
+include_once "utils/dirbase/file.php";
+include_once "utils/dirbase/dirBase.php";
+
+//class google real
+require_once "/var/script/googleOfflineConvertion/googleads-php-lib/examples/AdWords/v201809/Remarketing/UploadOfflineConversions.php";
+
+$logDate = new DateTime();
+xbug("{$logDate->format('Y-m-d H:i:s')} : test.php");
+
+use Google\AdsApi\Examples\AdWords\v201809\Remarketing\UploadOfflineConversions;
+
+UploadOfflineConversions::setPathCsv("/var/script/pixelNotification/dev1/buffer/20190714_2.csv");
+UploadOfflineConversions::processCsv(false);
+
+//04 se creo porque ese dia se escucho 87, [20, 22], entro 1 de 22
+//05 se creo porque ese dia se escucho 87, [20], entro 33 de 20
 
 
-$logger = logger::getInstance();
-$logger->setSessionId(uniqid());
-$logger->setPath(__DIR__ .'/logs/');
-$logger->setFileNamePrefix('process_pixel');
 
-$config = configJson::getInstance();
-$config->setConfigFile(__DIR__.'/config/config.json');
-
-$presubscription = new stdClass;
-$presubscription->Origen = '56912345677';
-$presubscription->MedioId = 96;
-$presubscription->PaqueteId = 748;
-$presubscription->SponsorId = 13;
-$presubscription->Fecha = '2018-07-24 15:15:15';
-$presubscription->MedioSuscripcionId = '';
-$presubscription->ExternalId = null;
-$presubscription->AdNetwork = 78;
-$presubscription->Pixel = 'test';
-$presubscription->Pub = null;
-$presubscription->Portal = 'http://test.test';
-$presubscription->FechaProceso = '2018-07-24 15:15:15';
-$presubscription->UserAgent = 'test';
-$presubscription->PorcentualNotification = 0;
-$presubscription->CPA = '1';
-
-$class = new Tmclicks($presubscription);
+// apiconversion,CjwKCAjwvJvpBRAtEiwAjLuRPTnY-rsvUGWkXHDOkwCKH8z60tgvfQdSrvuOSP2vVcEfxKeBw72JExoCcMQQAvD_BwE,"20190706 143928 America/Argentina/Buenos_Aires",0
+// apiconver,CjwKCAjwvJvpBRAtEiwAjLuRPflPsldXMwW9-SRDLecRDf8CdMQVeG5g9rycije_BkESz9dwRbuiDxoCTDwQAvD_BwE,"20190711 105207 America/Argentina/Buenos_Aires",0

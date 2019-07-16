@@ -89,7 +89,13 @@ class OfflineConversionFeedService extends \Google\AdsApi\Common\AdsSoapClient
      */
     public function mutate(array $operations)
     {
-      return $this->__soapCall('mutate', array(array('operations' => $operations)))->getRval();
-    }
+      $rta = $this->__soapCall('mutate', array(array('operations' => $operations)));
 
+      if(gettype($rta) === "string"){
+          return $rta;
+      }else{
+        $rta = $rta->getRval();
+        return $rta;
+      }
+    }
 }

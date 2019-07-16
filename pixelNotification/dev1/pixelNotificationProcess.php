@@ -11,38 +11,31 @@
 require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
 require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
 require_once __DIR__ . '/class/notification.class.php';
-require_once '/var/script/pixelNotification/dev1/utils/xbug.php';
+require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
+$logDate = new DateTime();
+xbug("{$logDate->format('Y-m-d H:i:s')} : pixelNotificationProcess.php");
 
-$script_execute = 1;
+$logger = logger::getInstance();
+$logger->setSessionId(uniqid());
+$logger->setPath(__DIR__ .'/logs/');
+$logger->setFileNamePrefix('process_pixel');
 
-while (1) {
-    $script_execute++;
-    xbug("Ejecucion : {$script_execute}");
+$config = configJson::getInstance();
+$config->setConfigFile(__DIR__.'/config/config.json');
 
-    $logger = logger::getInstance();
-    $logger->setSessionId(uniqid());
-    $logger->setPath(__DIR__ .'/logs/');
-    $logger->setFileNamePrefix('process_pixel');
-
-    $config = configJson::getInstance();
-    $config->setConfigFile(__DIR__.'/config/config.json');
-
-    $checkUltimoCobro = 0;
-    if (count($argv) == 2) {
-        $_arg = filter_var($argv[1], FILTER_SANITIZE_NUMBER_INT);
-        if (in_array($_arg, [0, 1])) {
-            $checkUltimoCobro = $_arg;
-        }
+$checkUltimoCobro = 0;
+if (count($argv) == 2) {
+    $_arg = filter_var($argv[1], FILTER_SANITIZE_NUMBER_INT);
+    if (in_array($_arg, [0, 1])) {
+        $checkUltimoCobro = $_arg;
     }
+}
 
-    $runningInstances = `ps ax | grep '/usr/bin/php' | grep 'pixelNotificationProcess.php {$checkUltimoCobro}' | grep -v grep | grep -v Ss | wc -l`;
+$runningInstances = `ps ax | grep '/usr/bin/php' | grep 'pixelNotificationProcess.php {$checkUltimoCobro}' | grep -v grep | grep -v Ss | wc -l`;
 
-    if ($runningInstances > $config->get('maxInstances')) {
-        $logger->write('The limit of max simultaneous run has reached: ' . $runningInstances, 'info');
-    } else {
-        xbug("pixelNotificationProcess, checkUltimoCobro : " . $checkUltimoCobro);
-        $notificationObj = new Notification($checkUltimoCobro);
-        $notificationObj->processNotifications();
-    }
-
+if ($runningInstances > $config->get('maxInstances')) {
+    $logger->write('The limit of max simultaneous run has reached: ' . $runningInstances, 'info');
+} else {
+    $notificationObj = new Notification($checkUltimoCobro);
+    $notificationObj->processNotifications();
 }

@@ -142,6 +142,7 @@ class AdsSoapClient extends SoapClient
         );
 
         $response = null;
+
         try {
             ini_set('default_socket_timeout', $this->soapCallTimeout);
             $response = parent::__soapCall(
@@ -153,22 +154,26 @@ class AdsSoapClient extends SoapClient
             );
             $this->processResponse($function_name);
         } catch (SoapFault $soapFault) {
+            // die();
+            // $this->processResponse($function_name);
             $this->processResponse($function_name, $soapFault);
+            $response = $soapFault->detail->ApiExceptionFault->errors->enc_value->getErrorString();
+            
 
-            // If there's no detail, just throw the SOAP fault.
-            if (!isset($soapFault->detail)) {
-                throw $soapFault;
-            }
+            // // // If there's no detail, just throw the SOAP fault.
+            // // if (!isset($soapFault->detail)) {
+            // //     throw $soapFault;
+            // // }
 
-            // Otherwise, attempt to parse out the API exception and throw that.
-            $apiException = $this->parseApiExceptionFromSoapFault($soapFault);
-            if ($apiException !== false) {
-                throw $apiException;
-            } else {
-                // If we can't deserialize the SOAP fault to an API exception, just
-                // throw the fault.
-                throw $soapFault;
-            }
+            // // // Otherwise, attempt to parse out the API exception and throw that.
+            // $apiException = $this->parseApiExceptionFromSoapFault($soapFault);
+            // // if ($apiException !== false) {
+            // //     throw $apiException;
+            // // } else {
+            // //     // If we can't deserialize the SOAP fault to an API exception, just
+            // //     // throw the fault.
+            // //     throw $soapFault;
+            // // }
         } finally {
             ini_restore('default_socket_timeout');
         }

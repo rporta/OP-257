@@ -37,19 +37,19 @@
             "network": "alfaconvert",
             "url": "http://track.alfa-serv.com/track/hash?hash="
         },
-    	"67": {
-    	    "network": "kimia",
-    	    "url": "http://sign.route-conversion.com/conversion_get/pixel.jpg?kp="
-    	},
+        "67": {
+            "network": "kimia",
+            "url": "http://sign.route-conversion.com/conversion_get/pixel.jpg?kp="
+        },
         "68": {
             "network": "spiroox",
             "url": "http://track.brucelead.com/gpxs.php?PID=792&STAGE=1&CID_SPX={click_id}&ID_LEAD={click_id}"
         },
-		"69": {
-			"network": "google",
+        "69": {
+            "network": "google",
             "url": "http://app.agenciaopra.com.ar/tracking/{key1}/campaign/{key2}/converted?gclid={click_id}"
-		},
-		"70": {
+        },
+        "70": {
             "network": "logan",
             "url": "http://tracker.loganmedia.mobi/track/e?transaction_id={click_id}&event_type=conversion",
             "urlnew": "https://logan.vnative.co/acquisition?click_id={click_id}&security_token=5f707ccbf51757c25a08"
@@ -61,13 +61,13 @@
         "73": {
             "network": "rekket",
             "urlold": "http://cl.l5x.us/conversions?advertiser_id=SMSamericas&subid={subid}",
-			"url": "http://offers.rekket.affise.com/postback?clickid={subid}&secure=813316f125af635a28c3bab914455639"
+            "url": "http://offers.rekket.affise.com/postback?clickid={subid}&secure=813316f125af635a28c3bab914455639"
         },
         "74": {
             "network": "bonapartte",
             "urlOld2": "http://track.bonaoffers1.com/postback?cid={REPLACE}",
             "urlOld1": "http://offers.bonapartte.affise.com/postback?clickid={REPLACE}",
-			"url": "https://www.levelapp.mobi/index.php?r=conversions/pixel&clickid={REPLACE}"
+            "url": "https://www.levelapp.mobi/index.php?r=conversions/pixel&clickid={REPLACE}"
         },
         "75": {
             "network": "mobipium",
@@ -80,12 +80,12 @@
         "78": {
             "network": "tmclicks",
             "__urlComment": "no hay que notificar para operadores de kinetic",
-            "skipSponsors": ["51","56"],
+            "skipSponsors": ["51", "56"],
             "url": "https://api.tmclicks.mobi/cv/{click_id}/?at={datetime}&ux={user_identifier}"
         },
         "79": {
             "network": "moviplus",
-			"url": "http://tracking.movi.plus/convMO.php?subid={click_id}&p=Opratel&carrier={sponsor_code}"
+            "url": "http://tracking.movi.plus/convMO.php?subid={click_id}&p=Opratel&carrier={sponsor_code}"
         },
         "80": {
             "network": "traffic",
@@ -94,16 +94,22 @@
         "81": {
             "network": "admobilly",
             "__urlComment": "no hay que notificar para operadores de kinetic",
-            "skipSponsors": ["51","56"],
+            "skipSponsors": ["51", "56"],
             "url": ""
         },
         "83": {
             "network": "pml",
             "url": "https://pml.afftrack.com/pb?mid=3635e2cb8f7cc356&status=1&subid={click_id}"
         },
-		"87": {
-			"network": "googlereal"
-		},
+        "87": {
+            "network": "googlereal",
+            "non-retries": ["UNAUTHORIZED_USER"],
+            "process-SponsorId": ["20", "55"],
+            "conversionMap": {
+                "20": "apiflor",
+                "55": "apiflor"
+            }
+        },
         "90": {
             "network": "agile",
             "url": "https://ads.mediasmart.es/m/open?id={pub_id}&udid={click_id}&ms_event_num=1"
@@ -111,7 +117,7 @@
     },
     "debug": 1,
     "maxInstances": 1,
-    "checkUltimoCobro": [2,13,16,17,20,22,23,24,34,45,48,53],
+    "checkUltimoCobro": [2, 13, 16, 17, 20, 22, 23, 24, 34, 45, 48, 53],
     "instanceName": ["Regular", "Billed"],
-    "overrideMDS": { }
+    "overrideMDS": {}
 }

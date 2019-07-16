@@ -18,6 +18,8 @@
 namespace Google\AdsApi\Examples\AdWords\v201809\Remarketing;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
+//log
+require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
 
 use Google\AdsApi\AdWords\AdWordsServices;
 use Google\AdsApi\AdWords\AdWordsSession;
@@ -51,6 +53,7 @@ class UploadOfflineConversions
         $conversionTime,
         $conversionValue
     ) {
+        xbug("runExample");
         $offlineConversionService = $adWordsServices->get($session, OfflineConversionFeedService::class);
 
         // Associate offline conversions with the existing named conversion tracker.
@@ -77,25 +80,36 @@ class UploadOfflineConversions
         $offlineConversionOperations = [$offlineConversionOperation];
 
         $result = $offlineConversionService->mutate($offlineConversionOperations);
+        $out = NULL;
+        if(gettype($result) === "string"){
+            $out = $result;
+        }else{
+            $feed = $result->getValue()[0];
+            // xbug($result);
+            $out = "OK";
+        }
+        xbug("result : {$out}");
+        return $out;
 
-        $feed = $result->getValue()[0];
-        printf(
-            "Uploaded offline conversion value of %d for Google Click ID = '%s' to '%s'.\n",
-            $feed->getConversionValue(),
-            $feed->getGoogleClickId(),
-            $feed->getConversionName()
-        );
     }
-
+    /**
+     * [main description]
+     * @param  [String] $conversion_name  [description]
+     * @param  [String] $gclid            [description]
+     * @param  [String] $conversion_time  [description]
+     * @param  [String] $conversion_value [description]
+     * @return [String]                   [description] : "OK" | "No response" 
+     */
     public static function main($conversion_name, $gclid, $conversion_time, $conversion_value)
     {
+        xbug("main");
         // Generate a refreshable OAuth2 credential for authentication.
         $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile()->build();
 
         // Construct an API session configured from a properties file and the
         // OAuth2 credentials above.
         $session = (new AdWordsSessionBuilder())->fromFile()->withOAuth2Credential($oAuth2Credential)->build();
-        self::runExample(
+        $out = self::runExample(
             new AdWordsServices(),
             $session,
             $conversion_name,
@@ -103,6 +117,7 @@ class UploadOfflineConversions
             $conversion_time,
             floatval($conversion_value)
         );
+        return $out;
     }
 
     public static function setPathCsv($pathCsv){
@@ -116,16 +131,16 @@ class UploadOfflineConversions
     /**
      * RAMIRO PORTAS 
      * [processCsv description] : Se encarga de abrir un archivo csv, recorrer los registros y pasarlos por la funcion main
-     * @return [void] [description] : 
+     * @return String [description] : "OK" | "No response" 
      */
-    public static function processCsv(){
+    public static function processCsv($return = true){
         /*debe recorrer */
         // 
-
+        xbug("processCsv");
         if (($fileCsv = fopen(self::getPathCsv(), "r")) !== FALSE) {
             $currentRecord = 1;
             while (($datos = fgetcsv($fileCsv, 1000, ",")) !== FALSE) {
-                
+
                 $conversion_name = $datos[0];
                 $gclid = $datos[1]; //String
                 $conversion_time = $datos[2];
@@ -135,9 +150,13 @@ class UploadOfflineConversions
                 echo $regLog;
                 
                 //resolve google gclick
-                self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
-
                 $currentRecord++;
+
+                if($return == true){
+                    return self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
+                }else{
+                    self::main($conversion_name, $gclid, $conversion_time, $conversion_value);
+                }
             }
             fclose($fileCsv);
         }
@@ -152,16 +171,23 @@ class UploadOfflineConversions
      * @return [void]       [description]
      * #lf : $conversion_name, $gclid, $conversion_time, $conversion_value)
      */
-    public static function populeCSV($data){
+    public static function populeCSV($data, $mode = "w"){
+        xbug("populeCSV");
         $lista = array();
         foreach ($data as $i => $v) {
             $lista[] = $v; //Array($conversion_name, $gclid, $conversion_time, $conversion_value)
         }
-        $fp = fopen(self::getPathCsv(), 'w');
+        $fp = fopen(self::getPathCsv(), $mode);
         foreach ($lista as $campos) {
             fputcsv($fp, $campos);
         }
         fclose($fp);
     }
 }
-UploadOfflineConversions::processCsv();
+
+//processCsv.sh
+//$argv[1] : path CSV 
+if(!empty($argv[1])){
+    UploadOfflineConversions::setPathCsv($argv[1]);
+    UploadOfflineConversions::processCsv(false);
+}

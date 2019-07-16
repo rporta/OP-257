@@ -1,0 +1,139 @@
+[2019-07-02 18:42:27] 5d1bcfc243834 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-02 18:42:27] 5d1bcfc243834 REGULAR DEBUG - "Googlereal::__construct $this->presubscription : stdClass::__set_state(array(
+   'PresuscripcionId' => '40738784',
+   'Origen' => '56975363822',
+   'MedioId' => '476',
+   'PaqueteId' => '787',
+   'SponsorId' => '22',
+   'Fecha' => '2019-07-02 18:32:34',
+   'MedioSuscripcionId' => '4116',
+   'ExternalId' => NULL,
+   'AdNetwork' => '87',
+   'Pixel' => 'EAIaIQobChMIwYGD1peX4wIVhshkCh24AgXBEAAYASAAEgJ6bPD_BwE',
+   'Pub' => NULL,
+   'Portal' => 'http://www.tulandia.net/landing/XEJzNv/adwordsflor/EAIaIQobChMIwYGD1peX4wIVhshkCh24AgXBEAAYASAAEgJ6b',
+   'FechaProceso' => '2019-07-02 18:42:34',
+   'UserAgent' => 'Mozilla/5.0 (Linux; Android 8.0.0; ANE-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Mobile Safari/537.36',
+   'SuscripcionId' => '77370607',
+   'PorcentualNotificacion' => '0',
+   'CPA' => '1',
+))"
+[2019-07-02 18:42:27] 5d1bcfc243834 REGULAR DEBUG - "Googlereal::__construct Request to Googlereal: Pixel: EAIaIQobChMIwYGD1peX4wIVhshkCh24AgXBEAAYASAAEgJ6bPD_BwE | Pub: "
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Googlereal::__construct $this->result : No response"
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Pixel Log saved for Msisdn:56975363822 | MedioId: 476 | PaqueteId: 787"
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Notification::deletePresubscription Starting."
+[2019-07-02 18:42:28] 5d1bcfc243834 REGULAR DEBUG - "Notification::deletePresubscription Ending."
+[2019-07-03 17:09:40] 5d1d0b839085b REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-03 17:09:40] 5d1d0b839085b REGULAR DEBUG - "Googlereal::__construct $this->presubscription : stdClass::__set_state(array(
+   'PresuscripcionId' => '40754692',
+   'Origen' => '56957803794',
+   'MedioId' => '476',
+   'PaqueteId' => '787',
+   'SponsorId' => '22',
+   'Fecha' => '2019-07-03 16:59:38',
+   'MedioSuscripcionId' => '4116',
+   'ExternalId' => NULL,
+   'AdNetwork' => '87',
+   'Pixel' => 'Cj0KCQjwpPHoBRC3ARIsALfx-_Ky3HmnLYtmGMAwDgVetc5xacTkim-0Qsywl57XATcfMAP5r48D4BQaArLsEALw_wcB',
+   'Pub' => NULL,
+   'Portal' => 'http://www.tulandia.net/landing/XEJzNv/adwordsflor/Cj0KCQjwpPHoBRC3ARIsALfx-_Ky3HmnLYtmGMAwDgVetc5xa',
+   'FechaProceso' => '2019-07-03 17:09:38',
+   'UserAgent' => 'Mozilla/5.0 (Linux; Android 8.0.0; moto g(6) play) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.101 Mobile Safari/537.36',
+   'SuscripcionId' => '77376880',
+   'PorcentualNotificacion' => '0',
+   'CPA' => '1',
+))"
+[2019-07-03 17:09:40] 5d1d0b839085b REGULAR DEBUG - "Googlereal::__construct Request to Googlereal: Pixel: Cj0KCQjwpPHoBRC3ARIsALfx-_Ky3HmnLYtmGMAwDgVetc5xacTkim-0Qsywl57XATcfMAP5r48D4BQaArLsEALw_wcB | Pub: "
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Googlereal::__construct $this->result : TOO_RECENT_CLICK"
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Pixel Log saved for Msisdn:56957803794 | MedioId: 476 | PaqueteId: 787"
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Notification::deletePresubscription Starting."
+[2019-07-03 17:09:41] 5d1d0b839085b REGULAR DEBUG - "Notification::deletePresubscription Ending."
+[2019-07-04 16:46:08] 5d1e577f397e6 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 16:46:48] 5d1e57a6f41b2 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 16:47:58] 5d1e57ecc7786 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 16:48:28] 5d1e580aa4fa5 REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 16:48:28] 5d1e580aa4fa5 REGULAR DEBUG - "Googlereal::__construct $this->presubscription : stdClass::__set_state(array(
+   'PresuscripcionId' => '40778316',
+   'Origen' => '56996448507',
+   'MedioId' => '476',
+   'PaqueteId' => '787',
+   'SponsorId' => '22',
+   'Fecha' => '2019-07-04 16:10:11',
+   'MedioSuscripcionId' => '4116',
+   'ExternalId' => NULL,
+   'AdNetwork' => '87',
+   'Pixel' => 'EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE',
+   'Pub' => NULL,
+   'Portal' => 'http://www.tulandia.net/landing/XEJzNv/adwordsflor/EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2',
+   'FechaProceso' => '2019-07-04 16:20:11',
+   'UserAgent' => 'Mozilla/5.0 (Linux; Android 8.0.0; moto g(6) plus Build/OPW27.113-89) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.126 Mobile Safari/537.36',
+   'SuscripcionId' => '77383824',
+   'PorcentualNotificacion' => '0',
+   'CPA' => '1',
+))"
+[2019-07-04 16:48:28] 5d1e580aa4fa5 REGULAR DEBUG - "Googlereal::__construct Request to Googlereal: Pixel: EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE | Pub: "
+[2019-07-04 16:48:29] 5d1e580aa4fa5 REGULAR DEBUG - "Googlereal::__construct $this->result : UNAUTHORIZED_USER"
+[2019-07-04 16:48:29] 5d1e580aa4fa5 REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-07-04 16:48:29] 5d1e580aa4fa5 REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-07-04 16:48:29] 5d1e580aa4fa5 REGULAR DEBUG - "Pixel Log saved for Msisdn:56996448507 | MedioId: 476 | PaqueteId: 787"
+[2019-07-04 16:48:29] 5d1e580aa4fa5 REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Googlereal::__construct $this->presubscription : stdClass::__set_state(array(
+   'PresuscripcionId' => '40778316',
+   'Origen' => '56996448507',
+   'MedioId' => '476',
+   'PaqueteId' => '787',
+   'SponsorId' => '22',
+   'Fecha' => '2019-07-04 16:10:11',
+   'MedioSuscripcionId' => '4116',
+   'ExternalId' => NULL,
+   'AdNetwork' => '87',
+   'Pixel' => 'EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE',
+   'Pub' => NULL,
+   'Portal' => 'http://www.tulandia.net/landing/XEJzNv/adwordsflor/EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2',
+   'FechaProceso' => '2019-07-04 16:20:11',
+   'UserAgent' => 'Mozilla/5.0 (Linux; Android 8.0.0; moto g(6) plus Build/OPW27.113-89) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.126 Mobile Safari/537.36',
+   'SuscripcionId' => '77383824',
+   'PorcentualNotificacion' => '0',
+   'CPA' => '1',
+))"
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Googlereal::__construct Request to Googlereal: Pixel: EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE | Pub: "
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Googlereal::__construct $this->result : UNAUTHORIZED_USER"
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Pixel Log saved for Msisdn:56996448507 | MedioId: 476 | PaqueteId: 787"
+[2019-07-04 16:50:38] 5d1e588cdf00b REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-07-04 17:01:04] 5d1e5afedbf4e REGULAR DEBUG - "Notification::sendPixelClick Starting."
+[2019-07-04 17:01:04] 5d1e5afedbf4e REGULAR DEBUG - "Googlereal::__construct $this->presubscription : stdClass::__set_state(array(
+   'PresuscripcionId' => '40778316',
+   'Origen' => '56996448507',
+   'MedioId' => '476',
+   'PaqueteId' => '787',
+   'SponsorId' => '22',
+   'Fecha' => '2019-07-04 16:10:11',
+   'MedioSuscripcionId' => '4116',
+   'ExternalId' => NULL,
+   'AdNetwork' => '87',
+   'Pixel' => 'EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE',
+   'Pub' => NULL,
+   'Portal' => 'http://www.tulandia.net/landing/XEJzNv/adwordsflor/EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2',
+   'FechaProceso' => '2019-07-04 16:20:11',
+   'UserAgent' => 'Mozilla/5.0 (Linux; Android 8.0.0; moto g(6) plus Build/OPW27.113-89) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.126 Mobile Safari/537.36',
+   'SuscripcionId' => '77383824',
+   'PorcentualNotificacion' => '0',
+   'CPA' => '1',
+))"
+[2019-07-04 17:01:04] 5d1e5afedbf4e REGULAR DEBUG - "Googlereal::__construct Request to Googlereal: Pixel: EAIaIQobChMIwv-Sz_ib4wIVjMXhCh38mgvDEAEYASAAEgKU2fD_BwE | Pub: "
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Googlereal::__construct $this->result : UNAUTHORIZED_USER"
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Notification::sendPixelClick Ending."
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Notification::savePixel Starting."
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Pixel Log saved for Msisdn:56996448507 | MedioId: 476 | PaqueteId: 787"
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Notification::savePixel Ending."
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Notification::updatePresubscription Starting."
+[2019-07-04 17:01:05] 5d1e5afedbf4e REGULAR DEBUG - "Notification::updatePresubscription Ending."

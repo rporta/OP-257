@@ -39,7 +39,6 @@ class Reflection
         $reflectionClass = new ReflectionClass($className);
         $args = func_get_args();
         array_shift($args);
-
         return $reflectionClass->newInstanceArgs($args);
     }
 }

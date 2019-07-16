@@ -61,6 +61,9 @@ final class ConfigurationLoader
                 $home = $this->environmentalVariables->getHome();
                 $homeConfigIniFilePath =
                 $home . DIRECTORY_SEPARATOR . pathinfo($configIniFilePath, PATHINFO_BASENAME);
+
+                //RAMIRO PORTAS - se modifica path configuracion 
+                $homeConfigIniFilePath = "/var/script/googleOfflineConvertion/adsapi_php.ini";
                 if (file_exists($homeConfigIniFilePath)) {
                     $configIniFilePath = $homeConfigIniFilePath;
                 } else {

@@ -18,6 +18,8 @@
 namespace Google\AdsApi\Examples\AdWords\v201809\BasicOperations;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
+//log
+require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
 
 use Google\AdsApi\AdWords\AdWordsServices;
 use Google\AdsApi\AdWords\AdWordsSession;
@@ -41,11 +43,12 @@ class GetCampaigns
         AdWordsServices $adWordsServices,
         AdWordsSession $session
     ) {
+
         $campaignService = $adWordsServices->get($session, CampaignService::class);
 
         // Create selector.
         $selector = new Selector();
-        $selector->setFields(['Id', 'Name']);
+        $selector->setFields(['Id', 'Name', 'Status']);
         $selector->setOrdering([new OrderBy('Name', SortOrder::ASCENDING)]);
         $selector->setPaging(new Paging(0, self::PAGE_LIMIT));
 

@@ -13,7 +13,7 @@ require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
 require_once '/var/www/html/oprafwk/lib/db/db.class.php';
 require_once '/var/www/html/oprafwk/lib/credis/Client.php';
 
-require_once '/var/script/pixelNotification/dev1/utils/xbug.php';
+require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
 /**
  * Class Notification
  *
@@ -87,37 +87,50 @@ class Notification
             $lastSponsor = null;
             $aOverrideMDS = null;
             foreach ($presubscriptions as $presubscription) {
-                if ($lastSponsor != $presubscription->SponsorId) {
-                    $lastSponsor = $presubscription->SponsorId;
-                    $this->_changeLogName($presubscription->SponsorId);
-                    $aOverrideMDS = $this->config->get('overrideMDS.' . $presubscription->SponsorId);
-                }
-                $notificado = 'NO';
+                // RAMIRO PORTAS, 
+                // Solo voy a procesar :
+                // AdNetwork "87"
+                // SponsorId "20"
+                xbug("\tAdNetwork : {$presubscription->AdNetwork}, SponsorId : {$presubscription->SponsorId}");
+                xbug($presubscription);
+                if(in_array($presubscription->SponsorId, ["20"])){
+                    
+                    if ($lastSponsor != $presubscription->SponsorId) {
+                        $lastSponsor = $presubscription->SponsorId;
+                        $this->_changeLogName($presubscription->SponsorId);
+                        $aOverrideMDS = $this->config->get('overrideMDS.' . $presubscription->SponsorId);
+                    }
+                    $notificado = 'NO';
 
-                $logText = ucfirst($this->config->get('adNetworks.' . $presubscription->AdNetwork . '.network'));
-                $logText .= ' | Msisdn: ' . $presubscription->Origen  . ' | MDS: ' . $presubscription->MedioSuscripcionId . ' | PresuscId.: ' . $presubscription->PresuscripcionId;
-                $logText .= ' | PaqueteId: ' . $presubscription->PaqueteId . ' | MedioId: ' . $presubscription->MedioId;
-                $logText .= ' | Pixel: ' . $presubscription->Pixel;
-                if ($presubscription->Pub) {
-                    $logText .=  ' | Pub: ' . $presubscription->Pub;
-                }
+                    $logText = ucfirst($this->config->get('adNetworks.' . $presubscription->AdNetwork . '.network'));
+                    $logText .= ' | Msisdn: ' . $presubscription->Origen  . ' | MDS: ' . $presubscription->MedioSuscripcionId . ' | PresuscId.: ' . $presubscription->PresuscripcionId;
+                    $logText .= ' | PaqueteId: ' . $presubscription->PaqueteId . ' | MedioId: ' . $presubscription->MedioId;
+                    $logText .= ' | Pixel: ' . $presubscription->Pixel;
+                    if ($presubscription->Pub) {
+                        $logText .=  ' | Pub: ' . $presubscription->Pub;
+                    }
 
-                if (is_array($aOverrideMDS) && in_array($presubscription->PaqueteId, $aOverrideMDS)) {
-                    $this->updateMDS($presubscription->MedioSuscripcionId, $presubscription->SuscripcionId);
-                }
+                    if (is_array($aOverrideMDS) && in_array($presubscription->PaqueteId, $aOverrideMDS)) {
+                        $this->updateMDS($presubscription->MedioSuscripcionId, $presubscription->SuscripcionId);
+                    }
 
-                $sendPixel = $this->sendPixelClick($presubscription);
-                if ($sendPixel) {
-                    $notificado = ($sendPixel->result == 'OK') ? 'SI' : 'Fallo';
-                    if ($sendPixel->result !== false) {
-                        $this->savePixel($presubscription, $sendPixel->result);
+                    $sendPixel = $this->sendPixelClick($presubscription);
+                    if ($sendPixel) {
+                        $notificado = ($sendPixel->result == 'OK') ? 'SI' : 'Fallo';
+                        if ($sendPixel->result !== false) {
+                            $this->savePixel($presubscription, $sendPixel->result);
+                        }
+                    }
+
+                    $logText .= ' | Notificado: ' . $notificado;
+                    $this->logger->write($logText, 'info');
+
+                    if($sendPixel->result == 'OK' && !in_array($sendPixel->result, $this->config->get('adNetworks.87.non-retries'))){
+                        $this->deletePresubscription($presubscription->PresuscripcionId);
+                    }else{
+                        $this->updatePresubscription($presubscription->PresuscripcionId);
                     }
                 }
-
-                $logText .= ' | Notificado: ' . $notificado;
-                $this->logger->write($logText, 'info');
-
-                $this->deletePresubscription($presubscription->PresuscripcionId);
             }
 
         }
@@ -135,14 +148,11 @@ class Notification
      */
     protected function sendPixelClick($presubscription)
     {
-        xbug(__METHOD__);
-        xbug($presubscription);
         if ($this->debug) {
             $this->logger->write(__METHOD__ . ' Starting.', 'debug');
         }
 
         $config = $this->config->get('adNetworks.' . $presubscription->AdNetwork);
-        xbug($config);
         if (!$config) {
             $this->logger->write(__METHOD__ . ' Config for AdNetwork ' . $presubscription->AdNetwork . ' not set', 'error');
             return false;
@@ -259,7 +269,7 @@ class Notification
         $resultSet = [];
 
          $sql = <<<EOQ
-            EXEC OpratelInfo.dbo.sp_Select_Presuscripcion_Usuarios_Suscriptos @SponsorsList = :sponsorsList, @UltimoCobro = :ultimoCobro
+            EXEC OpratelInfo.dbo.sp_Select_Presuscripcion_Usuarios_Suscriptos_TEST @SponsorsList = :sponsorsList, @UltimoCobro = :ultimoCobro, @AdNetworkId = 87
 EOQ;
 
         $sponsorsUltimoCobro = $this->config->get('checkUltimoCobro');
@@ -456,4 +466,21 @@ EOQ;
         }
     }
 
+
+   public function updatePresubscription($presubscriptionId)
+   {
+       if ($this->debug) {
+           $this->logger->write(__METHOD__ . ' Starting.', 'debug');
+       }
+   $query = <<<EOQ
+   UPDATE OpratelInfo.dbo.Presuscripcion
+   SET FechaProceso = dateadd(hour, 2, getdate())
+   WHERE PresuscripcionId = :presuscripcionId
+EOQ;
+   $prep =$this->db->prepare($query);
+   $execution = $this->db->executeWithBindings([':presuscripcionId' => $presubscriptionId]);
+   if ($this->debug) {
+       $this->logger->write(__METHOD__ . ' Ending.', 'debug');
+   }
+}
 }

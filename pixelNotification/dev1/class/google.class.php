@@ -75,7 +75,6 @@ class Google
             }
         }
 
-        xbug("result : {$response}");
         $this->result = $response;
 
     }
