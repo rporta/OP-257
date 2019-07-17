@@ -14027,3 +14027,1089 @@ Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
 ))
 <------------------------------------------------------------	Out	------------------------------------------------------------>
 
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'"ad performance report report #5d2f80b9a55c5 (Jul 15, 2019-Jul 16, 2019)"
+Currency,Cost,Clicks,Ad ID,Campaign
+ARS,541686,13,367332883164,Campaign #3 Patitas WEB Personal AR - Aud CPA
+ARS,289161,1,360695641884,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,520752,9,360715576045,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,14234,1,360782983850,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,274057,2,362703072129,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+ARS,188094,2,362703072123,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+ARS,113108,2,362703072126,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+Total,1941092,30, --, --
+'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'"ad performance report report #5d2f854b336d7 (Jul 15, 2019-Jul 16, 2019)"
+Currency,Cost,Clicks,Ad ID,Campaign
+ARS,541686,13,367332883164,Campaign #3 Patitas WEB Personal AR - Aud CPA
+ARS,289161,1,360695641884,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,520752,9,360715576045,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,14234,1,360782983850,Campaign #1 Desde Nosotras Personal AR - Aud - CPA
+ARS,274057,2,362703072129,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+ARS,188094,2,362703072123,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+ARS,113108,2,362703072126,Campaign #2 Desde Nosotras Personal AR - Topics - CPA
+Total,1941092,30, --, --
+'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2055906620,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #1 Desde Nosotras Personal AR - Aud - CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190705',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2122316096,
+     'name' => 'Campaign #1 Desde Nosotras Personal AR - Aud - CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 2000000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'ROTATE_INDEFINITELY',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+    1 => 
+    Google\AdsApi\AdWords\v201809\cm\TargetingSetting::__set_state(array(
+       'details' => 
+      array (
+        0 => 
+        Google\AdsApi\AdWords\v201809\cm\TargetingSettingDetail::__set_state(array(
+           'criterionTypeGroup' => 'USER_INTEREST_AND_LIST',
+           'targetAll' => false,
+        )),
+      ),
+       'SettingType' => 'TargetingSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 20000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2055906620,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2061099735,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #2 Desde Nosotras Personal AR - Topics - CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190710',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2128874156,
+     'name' => 'Campaign #2 Desde Nosotras Personal AR - Topics - CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 1000000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+    1 => 
+    Google\AdsApi\AdWords\v201809\cm\TargetingSetting::__set_state(array(
+       'details' => 
+      array (
+        0 => 
+        Google\AdsApi\AdWords\v201809\cm\TargetingSettingDetail::__set_state(array(
+           'criterionTypeGroup' => 'USER_INTEREST_AND_LIST',
+           'targetAll' => false,
+        )),
+      ),
+       'SettingType' => 'TargetingSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 28000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2061099735,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2065321823,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #3 Mujer Personal AR - Smart CPA',
+   'status' => 'PAUSED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190715',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2134647994,
+     'name' => 'Campaign #3 Mujer Personal AR - Smart CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 200000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'AREA_OF_INTEREST',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+    1 => 
+    Google\AdsApi\AdWords\v201809\cm\DynamicSearchAdsSetting::__set_state(array(
+       'domainName' => 'desdenosotras.com',
+       'languageCode' => 'es',
+       'useSuppliedUrlsOnly' => NULL,
+       'pageFeed' => NULL,
+       'SettingType' => 'DynamicSearchAdsSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'UNKNOWN',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => true,
+     'targetSearchNetwork' => true,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => 2067670654,
+     'biddingStrategyName' => '2065321823',
+     'biddingStrategyType' => 'TARGET_SPEND',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => NULL,
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2065321823,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2067222451,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #3 Patitas WEB Personal AR - Aud CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190716',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2139431237,
+     'name' => 'Campaign #3 Patitas WEB Personal AR - Aud CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 300000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 20000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2067222451,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2056181200,
+   'campaignGroupId' => NULL,
+   'name' => 'Leads-Display-1',
+   'status' => 'PAUSED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190705',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2122260950,
+     'name' => 'Leads-Display-1',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 10000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'MANUAL_CPC',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\ManualCpcBiddingScheme::__set_state(array(
+       'enhancedCpcEnabled' => true,
+       'BiddingSchemeType' => 'ManualCpcBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2056181200,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2055906620,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #1 Desde Nosotras Personal AR - Aud - CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190705',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2122316096,
+     'name' => 'Campaign #1 Desde Nosotras Personal AR - Aud - CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 2000000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'ROTATE_INDEFINITELY',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+    1 => 
+    Google\AdsApi\AdWords\v201809\cm\TargetingSetting::__set_state(array(
+       'details' => 
+      array (
+        0 => 
+        Google\AdsApi\AdWords\v201809\cm\TargetingSettingDetail::__set_state(array(
+           'criterionTypeGroup' => 'USER_INTEREST_AND_LIST',
+           'targetAll' => false,
+        )),
+      ),
+       'SettingType' => 'TargetingSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 20000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2055906620,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2061099735,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #2 Desde Nosotras Personal AR - Topics - CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190710',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2128874156,
+     'name' => 'Campaign #2 Desde Nosotras Personal AR - Topics - CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 1000000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+    1 => 
+    Google\AdsApi\AdWords\v201809\cm\TargetingSetting::__set_state(array(
+       'details' => 
+      array (
+        0 => 
+        Google\AdsApi\AdWords\v201809\cm\TargetingSettingDetail::__set_state(array(
+           'criterionTypeGroup' => 'USER_INTEREST_AND_LIST',
+           'targetAll' => false,
+        )),
+      ),
+       'SettingType' => 'TargetingSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 28000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2061099735,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+Google\AdsApi\AdWords\v201809\cm\Campaign::__set_state(array(
+   'id' => 2067222451,
+   'campaignGroupId' => NULL,
+   'name' => 'Campaign #3 Patitas WEB Personal AR - Aud CPA',
+   'status' => 'ENABLED',
+   'servingStatus' => 'SERVING',
+   'startDate' => '20190716',
+   'endDate' => '20371230',
+   'budget' => 
+  Google\AdsApi\AdWords\v201809\cm\Budget::__set_state(array(
+     'budgetId' => 2139431237,
+     'name' => 'Campaign #3 Patitas WEB Personal AR - Aud CPA',
+     'amount' => 
+    Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+       'microAmount' => 300000000,
+       'ComparableValueType' => 'Money',
+       'parameterMap' => 
+      array (
+        'ComparableValue.Type' => 'ComparableValueType',
+      ),
+    )),
+     'deliveryMethod' => 'STANDARD',
+     'referenceCount' => 1,
+     'isExplicitlyShared' => false,
+     'status' => 'ENABLED',
+  )),
+   'conversionOptimizerEligibility' => 
+  Google\AdsApi\AdWords\v201809\cm\ConversionOptimizerEligibility::__set_state(array(
+     'eligible' => false,
+     'rejectionReasons' => 
+    array (
+      0 => 'NOT_ENOUGH_CONVERSIONS',
+    ),
+  )),
+   'adServingOptimizationStatus' => 'OPTIMIZE',
+   'frequencyCap' => NULL,
+   'settings' => 
+  array (
+    0 => 
+    Google\AdsApi\AdWords\v201809\cm\GeoTargetTypeSetting::__set_state(array(
+       'positiveGeoTargetType' => 'DONT_CARE',
+       'negativeGeoTargetType' => 'DONT_CARE',
+       'SettingType' => 'GeoTargetTypeSetting',
+       'parameterMap' => 
+      array (
+        'Setting.Type' => 'SettingType',
+      ),
+    )),
+  ),
+   'advertisingChannelType' => 'DISPLAY',
+   'advertisingChannelSubType' => NULL,
+   'networkSetting' => 
+  Google\AdsApi\AdWords\v201809\cm\NetworkSetting::__set_state(array(
+     'targetGoogleSearch' => false,
+     'targetSearchNetwork' => false,
+     'targetContentNetwork' => true,
+     'targetPartnerSearchNetwork' => false,
+  )),
+   'labels' => NULL,
+   'biddingStrategyConfiguration' => 
+  Google\AdsApi\AdWords\v201809\cm\BiddingStrategyConfiguration::__set_state(array(
+     'biddingStrategyId' => NULL,
+     'biddingStrategyName' => NULL,
+     'biddingStrategyType' => 'TARGET_CPA',
+     'biddingStrategySource' => NULL,
+     'biddingScheme' => 
+    Google\AdsApi\AdWords\v201809\cm\TargetCpaBiddingScheme::__set_state(array(
+       'targetCpa' => 
+      Google\AdsApi\AdWords\v201809\cm\Money::__set_state(array(
+         'microAmount' => 20000000,
+         'ComparableValueType' => 'Money',
+         'parameterMap' => 
+        array (
+          'ComparableValue.Type' => 'ComparableValueType',
+        ),
+      )),
+       'maxCpcBidCeiling' => NULL,
+       'maxCpcBidFloor' => NULL,
+       'BiddingSchemeType' => 'TargetCpaBiddingScheme',
+       'parameterMap' => 
+      array (
+        'BiddingScheme.Type' => 'BiddingSchemeType',
+      ),
+    )),
+     'bids' => NULL,
+     'targetRoasOverride' => NULL,
+  )),
+   'campaignTrialType' => 'BASE',
+   'baseCampaignId' => 2067222451,
+   'forwardCompatibilityMap' => NULL,
+   'trackingUrlTemplate' => NULL,
+   'finalUrlSuffix' => NULL,
+   'urlCustomParameters' => NULL,
+   'vanityPharma' => NULL,
+   'universalAppCampaignInfo' => NULL,
+   'selectiveOptimization' => NULL,
+))
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Campaign #1 Desde Nosotras Personal AR - Aud - CPA'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Campaign #2 Desde Nosotras Personal AR - Topics - CPA'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Campaign #3 Patitas WEB Personal AR - Aud CPA'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name Campaign #1 Desde Nosotras Personal AR - Aud - CPA, Status ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name Campaign #2 Desde Nosotras Personal AR - Topics - CPA, Status ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name Campaign #3 Patitas WEB Personal AR - Aud CPA, Status ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'2019-07-17'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'2019-07-17'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'2019-07-16'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Reporte de campañas activas, desde 2019-07-16 hasta 2019-07-17'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2055906620 | Name : Campaign #1 Desde Nosotras Personal AR - Aud - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2061099735 | Name : Campaign #2 Desde Nosotras Personal AR - Topics - CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+
+
+<------------------------------------------------------------	In	------------------------------------------------------------>
+'Id : 2067222451 | Name : Campaign #3 Patitas WEB Personal AR - Aud CPA | Status : ENABLED'
+<------------------------------------------------------------	Out	------------------------------------------------------------>
+

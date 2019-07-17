@@ -30,7 +30,10 @@ use Google\AdsApi\AdWords\v201809\cm\Paging;
 use Google\AdsApi\AdWords\v201809\cm\Selector;
 use Google\AdsApi\AdWords\v201809\cm\SortOrder;
 use Google\AdsApi\AdWords\v201809\cm\DateRange;
+use Google\AdsApi\AdWords\v201809\cm\Predicate;
+use Google\AdsApi\AdWords\v201809\cm\PredicateOperator;
 use Google\AdsApi\Common\OAuth2TokenBuilder;
+
 
 /**
  * This example gets all campaigns. To add a campaign, run AddCampaign.php.
@@ -55,6 +58,13 @@ class GetCampaigns
         $selector->setPaging(new Paging(0, self::PAGE_LIMIT));
         $selector->setDateRange(new DateRange($setSelector->setDateRange[0], $setSelector->setDateRange[1]));
 
+        $selector->setPredicates(
+            [
+                new Predicate('Status', PredicateOperator::NOT_IN, ['PAUSED'])
+            ]
+        );
+
+
         $totalNumEntries = 0;
         do {
             // Make the get request.
@@ -64,7 +74,7 @@ class GetCampaigns
             if ($page->getEntries() !== null) {
                 $totalNumEntries = $page->getTotalNumEntries();
                 foreach ($page->getEntries() as $campaign) {
-                    xbug($campaign);
+                    xbug("Id : {$campaign->getId()} | Name : {$campaign->getName()} | Status : {$campaign->getStatus()}");
                 }
             }
 
@@ -173,8 +183,32 @@ $setSelector->setFields =
 'VanityPharmaText',
 'ViewableCpmEnabled'];
 $setSelector->setOrdering = 'Name';
-$setSelector->setDateRange = ["20190716", "20190717"];
+
+//definimos la fecha ayer
+$ayer = call_user_func(function() {
+    $temp = new \DateTime();
+    $temp->sub(new \DateInterval('P1D'));
+    $temp = str_replace([":", "-"], "", $temp->format('Y-m-d'));
+    return $temp;
+});
+//definimos la fecha hoy
+$hoy = call_user_func(function() {
+    $temp = new \DateTime();
+    $temp = str_replace([":", "-"], "", $temp->format('Y-m-d'));
+    return $temp;
+});
 
 
+//titulo por consola
+call_user_func(function() {
+    $hoy = new \DateTime();
+    $ayer = new \DateTime();
+    $ayer->sub(new \DateInterval('P1D'));
+    xbug("Reporte de campañas activas, del {$ayer->format('Y-m-d')} al {$hoy->format('Y-m-d')}");
+});
+
+$setSelector->setDateRange = [$ayer, $hoy];
 
 GetCampaigns::main($ClientCustomerId, $setSelector);
+
+
