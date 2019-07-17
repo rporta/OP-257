@@ -36,7 +36,7 @@ function populeLog($data){
     $temp .= "\n";
     $temp .= "<".$arg3."\tOut\t".$arg3.">\n";
     $temp .= "\n";
-    $fp = fopen("/var/script/pixelNotification/dev1/utils/xbug.log", 'a+');
+    $fp = fopen("/var/www/OP-257/pixelNotification/dev1/utils/xbug.log", 'a+');
     fputs($fp, $temp);
     fclose($fp);
 }

@@ -18,6 +18,8 @@
 namespace Google\AdsApi\Examples\AdWords\v201809\Reporting;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
+//log
+require_once '/var/www/OP-257/pixelNotification/dev1/utils/xbug.php';
 
 use Google\AdsApi\AdWords\AdWordsServices;
 use Google\AdsApi\AdWords\AdWordsSession;
@@ -41,7 +43,7 @@ class GetReportFields
         $reportDefinitionService = $adWordsServices->get($session, ReportDefinitionService::class);
 
         // The type of the report to get fields for.
-        $reportType = ReportDefinitionReportType::CAMPAIGN_PERFORMANCE_REPORT;
+        $reportType = ReportDefinitionReportType::AD_PERFORMANCE_REPORT;
 
         // Get report fields of the report type.
         $reportDefinitionFields = $reportDefinitionService->getReportFields($reportType);
@@ -51,18 +53,8 @@ class GetReportFields
             $reportType
         );
         foreach ($reportDefinitionFields as $reportDefinitionField) {
-            printf(
-                '  %s (%s)',
-                $reportDefinitionField->getFieldName(),
-                $reportDefinitionField->getFieldType()
-            );
-            if ($reportDefinitionField->getEnumValues() !== null) {
-                printf(
-                    ' := [%s]',
-                    implode(', ', $reportDefinitionField->getEnumValues())
-                );
-            }
-            print "\n";
+            xbug($reportDefinitionField);
+            
         }
     }
 

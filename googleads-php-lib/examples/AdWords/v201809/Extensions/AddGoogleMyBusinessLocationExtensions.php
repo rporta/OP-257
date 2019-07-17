@@ -193,7 +193,7 @@ class AddGoogleMyBusinessLocationExtensions
         // which feed items are used at the AdGroup level.
     }
 
-    public static function main()
+    public static function main($ClientCustomerId = "713-824-1599")
     {
         // Generate a refreshable OAuth2 credential for authentication.
         $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile()->build();
@@ -209,7 +209,7 @@ class AddGoogleMyBusinessLocationExtensions
 
         // Construct an API session configured from a properties file and the
         // OAuth2 credentials above.
-        $session = (new AdWordsSessionBuilder())->fromFile()->withOAuth2Credential($oAuth2Credential)->build();
+        $session = (new AdWordsSessionBuilder())->fromFile()->withOAuth2Credential($oAuth2Credential)->withClientCustomerId($ClientCustomerId)->build();
         self::runExample(
             new AdWordsServices(),
             $session,

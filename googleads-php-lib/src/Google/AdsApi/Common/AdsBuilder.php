@@ -29,7 +29,7 @@ interface AdsBuilder
      * @var string the default filename for the configuration file for this
      *     library
      */
-    const DEFAULT_CONFIGURATION_FILENAME = 'adsapi_php.ini';
+    const DEFAULT_CONFIGURATION_FILENAME = '/var/www/OP-257/adsapi_php.ini';
 
     /**
      * Populates this builder from the specified configuration object.
