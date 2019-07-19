@@ -313,7 +313,6 @@ class GetCampaigns2
             return $out;
         });
 
-
         xbug($rta);
         xbug($totalizador);
     }
