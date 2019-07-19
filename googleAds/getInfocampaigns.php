@@ -1,13 +1,14 @@
 <?php
 /**
- * Process pixel notifications
+ * getInfoCampaings
  *
  * @category Process
  * @package  AdNetworks
- * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
+ * @author   Ramiro Portas <ramiro.portas@opratel.com>
  * @license  http://www.opratel.com Opratel
  * @link     http://www.opratel.com Opratel
  */
+
 // default
 require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
 require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
