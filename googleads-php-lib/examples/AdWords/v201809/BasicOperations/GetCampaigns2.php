@@ -56,22 +56,30 @@ class GetCampaigns2
                 // "AccountTimeZone",
                 // "AdvertisingChannelSubType",
                 // "AdvertisingChannelType",
-                "Amount",
-                "BaseCampaignId",
+                // 
+                // "Amount",
+                // "BaseCampaignId",
+
                 // "BiddingStrategyId",
                 // "BiddingStrategyName",
                 // "BiddingStrategyType",
                 // "BudgetId",
                 // "CampaignDesktopBidModifier",
-                "CampaignGroupId",
+                // 
+                // "CampaignGroupId",
                 "CampaignId",
+
                 // "CampaignMobileBidModifier",
+                // 
                 "CampaignName",
                 "CampaignStatus",
+
                 // "CampaignTabletBidModifier",
                 // "CampaignTrialType",
                 // "ConversionAdjustment",
-                "CustomerDescriptiveName",
+                // 
+                // "CustomerDescriptiveName",
+
                 // "EndDate",
                 // "EnhancedCpcEnabled",
                 // "ExternalCustomerId",
@@ -116,9 +124,11 @@ class GetCampaigns2
                 // "ActiveViewMeasurableCost",
                 // "ActiveViewMeasurableImpressions",
                 // "ActiveViewViewability",
-                "AllConversionRate",
-                "AllConversions",
-                "AllConversionValue",
+                // 
+                // "AllConversionRate",
+                // "AllConversions",
+                // "AllConversionValue",
+
                 // "AverageCost",
                 // "AverageCpc",
                 // "AverageCpe",
@@ -132,21 +142,23 @@ class GetCampaigns2
                 // "ClickAssistedConversions",
                 // "ClickAssistedConversionsOverLastClickConversions",
                 // "ClickAssistedConversionValue",
+                // 
                 "Clicks",
-                "ContentBudgetLostImpressionShare",
-                "ContentImpressionShare",
-                "ContentRankLostImpressionShare",
-                "ConversionRate",
-                "Conversions",
-                "ConversionValue",
+                // "ContentBudgetLostImpressionShare",
+                // "ContentImpressionShare",
+                // "ContentRankLostImpressionShare",
+                // "ConversionRate",
+                // "Conversions",
+                // "ConversionValue",
                 "Cost",
-                "CostPerAllConversion",
-                "CostPerConversion",
-                "CostPerCurrentModelAttributedConversion",
-                "CrossDeviceConversions",
-                "Ctr",
-                "CurrentModelAttributedConversions",
-                "CurrentModelAttributedConversionValue",
+                // "CostPerAllConversion",
+                // "CostPerConversion",
+                // "CostPerCurrentModelAttributedConversion",
+                // "CrossDeviceConversions",
+                // "Ctr",
+                // "CurrentModelAttributedConversions",
+                // "CurrentModelAttributedConversionValue",
+
                 // "EngagementRate",
                 // "Engagements",
                 // "GmailForwards",
@@ -156,17 +168,21 @@ class GetCampaigns2
                 // "ImpressionAssistedConversionsOverLastClickConversions",
                 // "ImpressionAssistedConversionValue",
                 // "ImpressionReach",
-                // "Impressions",
+                // 
+                "Impressions",
+
                 // "InteractionRate",
                 // "Interactions",
                 // "InteractionTypes",
                 // "InvalidClickRate",
                 // "InvalidClicks",
-                "NumOfflineImpressions",
-                "NumOfflineInteractions",
-                "OfflineInteractionRate",
-                "PercentNewVisitors",
-                "RelativeCtr",
+                // 
+                // "NumOfflineImpressions",
+                // "NumOfflineInteractions",
+                // "OfflineInteractionRate",
+                // "PercentNewVisitors",
+                // "RelativeCtr",
+
                 // "SearchAbsoluteTopImpressionShare",
                 // "SearchBudgetLostAbsoluteTopImpressionShare",
                 // "SearchBudgetLostImpressionShare",
@@ -179,9 +195,11 @@ class GetCampaigns2
                 // "SearchRankLostTopImpressionShare",
                 // "SearchTopImpressionShare",
                 // "TopImpressionPercentage",
-                "ValuePerAllConversion",
-                "ValuePerConversion",
-                "ValuePerCurrentModelAttributedConversion",
+                // 
+                // "ValuePerAllConversion",
+                // "ValuePerConversion",
+                // "ValuePerCurrentModelAttributedConversion",
+
                 // "VideoQuartile100Rate",
                 // "VideoQuartile25Rate",
                 // "VideoQuartile50Rate",
@@ -199,7 +217,14 @@ class GetCampaigns2
         //     ]
         // );
         //fecha min, fecha max
-        $selector->setDateRange(new DateRange("20190714", "20190715"));
+
+
+        $desde = new \DateTime("2019-07-14");
+        $hasta = new \DateTime("2019-07-15");
+
+        xbug("Get campaign 2 : del {$desde->format('Y-m-d')} al {$hasta->format('Y-m-d')}");
+
+        $selector->setDateRange(new DateRange($desde->format('Ymd'), $hasta->format('Ymd')));
 
         // Create report definition.
         $reportDefinition = new ReportDefinition();
@@ -273,6 +298,7 @@ class GetCampaigns2
             [
               "Cost",
               "Clicks",  
+              "Impressions",  
             ];
             $out = array_fill_keys($fieldsTotalizador, 0);
             foreach ($rta as $r) {
