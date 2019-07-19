@@ -157,7 +157,7 @@ class GetAccountHierarchy
         }
     }
 
-    public static function main($ClientCustomerId = "713-824-1599")
+    public static function main($ClientCustomerId = "982-974-7784")
     {
         // Generate a refreshable OAuth2 credential for authentication.
         $oAuth2Credential = (new OAuth2TokenBuilder())->fromFile()->build();
