@@ -53,7 +53,7 @@ class GetCampaigns2
             [
                 // "AccountCurrencyCode",
                 // "AccountDescriptiveName",
-                // "AccountTimeZone",
+                "AccountTimeZone",
                 // "AdvertisingChannelSubType",
                 // "AdvertisingChannelType",
                 // 
@@ -219,7 +219,7 @@ class GetCampaigns2
         //fecha min, fecha max
 
 
-        $desde = new \DateTime("2019-07-14");
+        $desde = new \DateTime("2019-07-15");
         $hasta = new \DateTime("2019-07-15");
 
         xbug("Get campaign 2 : del {$desde->format('Y-m-d')} al {$hasta->format('Y-m-d')}");
@@ -319,7 +319,18 @@ class GetCampaigns2
 
     // . $ClientCustomerId, corresponde al numero de cuenta,
     // . consultamos a la cuenta las campañas disponibles
-    // . Opratel ARS, 713-824-1599
+    // (Customer ID, Account Name)
+    // 9829747784, GADS Admin
+    // --638-046-8798, Uruguay I
+    // --324-194-8893, Bolivia I
+    // --650-074-0154, Cardinal_Opratel
+    // --812-435-4713, Costa Rica I
+    // --344-266-4368, Paraguay I
+    // --221-501-1770, Panama I
+    // --928-330-0290, Chile II
+    // --713-824-1599, Opratel ARS
+    // --922-340-3407, Opratel USD
+
     public static function main($ClientCustomerId = "713-824-1599", $setSelector = null)
     {
         // Generate a refreshable OAuth2 credential for authentication.
