@@ -233,23 +233,63 @@ class GetCampaigns2
 
         $reportDownloader = new ReportDownloader($session);
 
-        $reportSettingsOverride = (new ReportSettingsBuilder())->includeZeroImpressions(false)->build();
+        $reportSettingsOverride = 
+        (new ReportSettingsBuilder())->
+        skipReportHeader(true)->
+        skipColumnHeader(false)->
+        skipReportSummary(true)->
+        useRawEnumValues(true)->
+        includeZeroImpressions(false)->
+        build();
 
         $reportDownloadResult = $reportDownloader->downloadReport(
             $reportDefinition,
             $reportSettingsOverride
         );
 
+        $tempRta = $reportDownloadResult->getAsString();
 
-        $rta = $reportDownloadResult->getAsString();
+        //fix rta : array
+
+        $rta = call_user_func(function() use ($tempRta) {
+            $out = array();
+            $temp = explode("\n", $tempRta);
+            foreach ($temp as $k => $r) {
+                if(!empty($r)){
+                    if($k === 0){
+                        $keys = explode(",", $r);
+                    }else{
+                        array_push($out, array_combine($keys, explode(",", $r)));
+                    }
+                }
+            }
+            return $out;
+        });
+
+        //fix totalizador : array 
+
+        $totalizador = call_user_func(function() use ($rta) {
+            $fieldsTotalizador = 
+            [
+              // "Cost",
+              // "Clicks",  
+            ];
+            $out = array_fill_keys($fieldsTotalizador, 0);
+            foreach ($rta as $r) {
+                foreach ($r as $k => $v) {
+                    foreach ($out as $ok => &$ov) {
+                        if($k === $ok){
+                            $out[$ok] += $v;
+                        }
+                    }
+                }
+            }
+            return $out;
+        });
+
+
         xbug($rta);
-
-        // $reportDownloadResult->saveToFile($filePath);
-        // printf(
-            // "Report with name '%s' was downloaded to '%s'.\n",
-            // $reportDefinition->getReportName(),
-            // $filePath
-        // );
+        xbug($totalizador);
     }
 
     // . $ClientCustomerId, corresponde al numero de cuenta,
