@@ -51,9 +51,9 @@ class GetCampaigns2
         $selector = new Selector();
         $selector->setFields(
             [
-                // "AccountCurrencyCode",
+                "AccountCurrencyCode",
                 // "AccountDescriptiveName",
-                "AccountTimeZone",
+                // "AccountTimeZone",
                 // "AdvertisingChannelSubType",
                 // "AdvertisingChannelType",
                 // 
@@ -151,9 +151,9 @@ class GetCampaigns2
                 // "Conversions",
                 // "ConversionValue",
                 "Cost",
-                // "CostPerAllConversion",
-                // "CostPerConversion",
-                // "CostPerCurrentModelAttributedConversion",
+                "CostPerAllConversion",
+                "CostPerConversion",
+                "CostPerCurrentModelAttributedConversion",
                 // "CrossDeviceConversions",
                 // "Ctr",
                 // "CurrentModelAttributedConversions",
@@ -310,12 +310,16 @@ class GetCampaigns2
                     }
                 }
             }
+            $out['Cost'] = $out['Cost'] / 1000000;
+            $out['Cost'] = number_format ($out['Cost'], 2) ;
             return $out;
         });
 
         xbug($rta);
         xbug($totalizador);
     }
+
+    
 
     // . $ClientCustomerId, corresponde al numero de cuenta,
     // . consultamos a la cuenta las campañas disponibles
