@@ -1,14 +1,13 @@
 <?php
 /**
- * getInfoCampaings
+ * Process pixel notifications
  *
  * @category Process
  * @package  AdNetworks
- * @author   Ramiro Portas <ramiro.portas@opratel.com>
+ * @author   Leonardo Nachman <leonardo.nachman@opratel.com>
  * @license  http://www.opratel.com Opratel
  * @link     http://www.opratel.com Opratel
  */
-
 // default
 require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
 require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
@@ -48,7 +47,7 @@ $db = new db(
 );
 
 // ahora se puede usar xbug
-xbug("{$logDate->format('Y-m-d H:i:s')} : getInfocampaigns.php");
+xbug("{$logDate->format('Y-m-d H:i:s')} : getGapiCampaignMap.php");
 
 // $argv[1] : fecha de consuta en format YYYYMMDD, parametro opcional 
 if(!empty($argv[1])){
@@ -81,6 +80,7 @@ if(!empty($argv[1])){
 }
 
 // ahora se puede consumir rta : Array
+$ClientCustomerId = "713-824-1599";
 $setSelector->setDateRange = [$desde, $hasta];// <- viende de GetCampaignsInfoOpratel.php
 $rta = GetCampaignsInfoOpratel::main($ClientCustomerId, $setSelector);
 
