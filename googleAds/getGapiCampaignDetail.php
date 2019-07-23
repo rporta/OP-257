@@ -90,6 +90,8 @@ $rta = GetCampaignsInfoCostOpratel::main($ClientCustomerId, $setSelector);
 
 xbug($rta);
 
+die();
+
 // aca se debe resolver en OpratelConsulta.dbo.GAPI_CampaignDetail 
-// $rtaResolver = new resolverSelectInsertUpdate($rta, 'OpratelConsulta.dbo.GAPI_CampaignDetail');
-// $rtaResolver->runResolver();
+$rtaResolver = new resolverSelectInsertUpdate($rta, 'OpratelConsulta.dbo.GAPI_CampaignDetail');
+$rtaResolver->runResolver();

@@ -123,7 +123,10 @@ class GetCampaignsInfoCostOpratel
                     if($k === 0){
                         $keys = explode(",", $r);
                     }else{
-                        array_push($out, array_combine($keys, explode(",", $r)));
+                        $tempkeysValueRta = array_combine($keys, explode(",", $r));
+                        $tempkeysValueRta['Cost'] = $tempkeysValueRta['Cost'] / 1000000;
+                        $tempkeysValueRta['Cost'] = number_format ($tempkeysValueRta['Cost'], 2);                
+                        array_push($out, $tempkeysValueRta);
                     }
                 }
             }

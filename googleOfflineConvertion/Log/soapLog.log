@@ -208,3 +208,4 @@ Connection: close
 [2019-07-23 12:13:38] AW_SOAP.INFO: clientCustomerId=713-824-1599 operations=1 service=CampaignService method=get responseTime=232 requestId=00058e5aa3209b240a37b4c7f007b66b server=adwords.google.com isFault=0 faultMessage=  
 [2019-07-23 12:27:16] AW_SOAP.INFO: clientCustomerId=713-824-1599 operations=1 service=CampaignService method=get responseTime=254 requestId=00058e5ad3d6c66d0a374e58980e9328 server=adwords.google.com isFault=0 faultMessage=  
 [2019-07-23 12:28:35] AW_SOAP.INFO: clientCustomerId=713-824-1599 operations=1 service=CampaignService method=get responseTime=239 requestId=00058e5ad89395d902ab4195fb06add5 server=adwords.google.com isFault=0 faultMessage=  
+[2019-07-23 12:36:21] AW_SOAP.INFO: clientCustomerId=713-824-1599 operations=1 service=CampaignService method=get responseTime=222 requestId=00058e5af45867130a378b0179019ba4 server=adwords.google.com isFault=0 faultMessage=  

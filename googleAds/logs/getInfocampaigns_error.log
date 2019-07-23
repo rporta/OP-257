@@ -8,3 +8,6 @@
 [2019-07-23 12:32:01] 5d372871804ae Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"
 [2019-07-23 12:32:16] 5d372880d57e1 Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"
 [2019-07-23 12:33:12] 5d3728b8ea512 Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"
+[2019-07-23 12:35:57] 5d37295db43a7 Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"
+[2019-07-23 12:36:20] 5d372974cde7e Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"
+[2019-07-23 12:46:35] 5d372bdbed276 Operador ERROR - "Could not connect to DB. dblib:host=Zeus;dbname=OpratelCenter. [Message]could not find driver"

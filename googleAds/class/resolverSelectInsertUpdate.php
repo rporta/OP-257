@@ -55,8 +55,15 @@ class resolverSelectInsertUpdate extends batman
 				}
 				$this->statusResolver = true;
 				break;
-			default:
 
+			case 'OpratelConsulta.dbo.GAPI_CampaignDetail':
+				foreach ($this->data as $d) {
+					$this->queryInsertCampingDetail($d);
+				}
+				$this->statusResolver = true;
+				break;	
+			default:
+				$this->statusResolver = false;
 				break;
 		}
 	}
@@ -93,6 +100,35 @@ class resolverSelectInsertUpdate extends batman
 		}
 
 		return sizeof($rta) == 0 ? false : true;
+	}
+
+	public function queryInsertCampingDetail($data){
+		xbug(__METHOD__);
+		// $this->mapStatus($data['Campaign state']); //no se persiste este dato en la consuta
+		$date_created = $date_modified = $this->getDate();
+
+        $aBindings = [
+            // ':CampaignMapId' => $data['Campaign ID'],
+            ':Impressions' => $data['Impressions'],
+            ':Clicks' => $data['Clicks'],
+            ':Cost' => $data['Cost'],
+            ':date_created' => $date_created,
+            ':date_modified' => $date_modified
+        ];
+ 
+		$query = 
+		"INSERT INTO {$this->destine} (CampaignMapId, Impressions, Clicks, Cost, date_created, date_modified)\n".
+		"VALUES ((SELECT CampaignMapId FROM OpratelConsulta.dbo.GAPI_CampaignMap WHERE CampaignId = {$data['Campaign ID']} LIMIT 1), :Impressions, :Clicks, :Cost, :date_created, :date_modified)";
+
+		$prep = $this->db->prepare($query);
+
+		try {
+			$rta = $this->db->executeWithBindings($aBindings);
+		} catch (Exception $e) {
+			xbug($e);
+			xbug($e->getMessage());
+			$this->logger->write(__METHOD__.' -> ' . $e->getMessage(), 'info');
+		}
 	}
 
 	public function queryUpdateCamping($data){
