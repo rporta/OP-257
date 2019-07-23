@@ -20,7 +20,6 @@ namespace Google\AdsApi\Examples\AdWords\v201809\BasicOperations;
 require __DIR__ . '/../../../../vendor/autoload.php';
 
 //log
-require_once '/var/www/OP-257/pixelNotification/dev1/utils/xbug.php';
 
 use Google\AdsApi\AdWords\AdWordsSession;
 use Google\AdsApi\AdWords\AdWordsSessionBuilder;
@@ -61,7 +60,7 @@ class GetCampaignsInfoCostOpratel
         call_user_func(function() use ($setSelector){
             $ayer = new \DateTime($setSelector->setDateRange[0]);
             $hoy = new \DateTime($setSelector->setDateRange[1]);
-            xbug("Reporte del costo de las campañas activas, del {$ayer->format('Y-m-d')} al {$hoy->format('Y-m-d')}");
+            // xbug("Reporte del costo de las campañas activas, del {$ayer->format('Y-m-d')} al {$hoy->format('Y-m-d')}");
         });
 
         $selector->setDateRange(new DateRange($setSelector->setDateRange[0], $setSelector->setDateRange[1]));
@@ -155,8 +154,8 @@ class GetCampaignsInfoCostOpratel
             return $out;
         });
 
-        xbug($rta);
-        xbug($totalizador);
+        // xbug($rta);
+        // xbug($totalizador);
         return $rta;
     }
 
@@ -392,4 +391,4 @@ $hoy = call_user_func(function() {
 $setSelector->setDateRange = [$ayer, $hoy];
 
 
-GetCampaignsInfoCostOpratel::main($ClientCustomerId, $setSelector);
+// GetCampaignsInfoCostOpratel::main($ClientCustomerId, $setSelector);

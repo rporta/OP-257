@@ -1,4 +1,10 @@
 <?php
+$xbugConfig = new \stdClass;
+
+//default config
+$xbugConfig->fileLog = "/var/script/pixelNotification/dev1/utils/xbug/xbug.log";
+$xbugConfig->mode = "a+";
+
 /*---------------------------------------------------*/ 
 function xbug($arg,$arg2 = false){
     populeLog($arg);//implementa log en 'xbug.log'
@@ -29,6 +35,7 @@ function xbug($arg,$arg2 = false){
 /*---------------------------------------------------*/ 
 
 function populeLog($data){
+    global $xbugConfig;
     $arg3 = str_repeat("-", 60);
     $temp = "\n";
     $temp .= "<".$arg3."\tIn\t".$arg3.">\n";
@@ -36,7 +43,7 @@ function populeLog($data){
     $temp .= "\n";
     $temp .= "<".$arg3."\tOut\t".$arg3.">\n";
     $temp .= "\n";
-    $fp = fopen("/var/script/pixelNotification/dev1/utils/xbug/xbug.log", 'a+');
+    $fp = fopen($xbugConfig->fileLog, $xbugConfig->mode);
     fputs($fp, $temp);
     fclose($fp);
 }

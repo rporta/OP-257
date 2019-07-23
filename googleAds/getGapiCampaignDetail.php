@@ -8,20 +8,24 @@
  * @license  http://www.opratel.com Opratel
  * @link     http://www.opratel.com Opratel
  */
-// default
-require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
-require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+// dependencias:prod
+// require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+// require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+// require_once '/var/www/html/oprafwk/lib/db/db.class.php';
+// require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
+// require_once "/var/script/googleOfflineConvertion/googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoCostOpratel.php";
+// require_once '/var/script/googleAds/class/resolverSelectInsertUpdate.php';
 
-// xbug
-require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
+// dependencias:local
 
-// v201806
-require_once "/var/script/googleOfflineConvertion/googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoCostOpratel.php";
-// db oprafwk
-require_once '/var/www/html/oprafwk/lib/db/db.class.php';
+require_once __DIR__.'/libOprafwk/logger/logger.class.php';
+require_once __DIR__.'/libOprafwk/config/configJson.class.php';
+require_once __DIR__.'/libOprafwk/db/db.class.php';
+require_once __DIR__.'/../pixelNotification/dev1/utils/xbug/xbug.php';
+require_once __DIR__.'/../googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoCostOpratel.php';
+require_once __DIR__.'/class/resolverSelectInsertUpdate.php';
 
-// resolve Select Insert Update on db
-require_once '/var/script/googleAds/class/resolverSelectInsertUpdate.php';
+
 
 use Google\AdsApi\Examples\AdWords\v201809\BasicOperations\GetCampaignsInfoCostOpratel;
 
@@ -84,9 +88,8 @@ $ClientCustomerId = "713-824-1599";
 $setSelector->setDateRange = [$desde, $hasta];// <- viende de GetCampaignsInfoCostOpratel.php
 $rta = GetCampaignsInfoCostOpratel::main($ClientCustomerId, $setSelector);
 
-
 xbug($rta);
 
-// aca se debe resolver en OpratelConsulta.dbo.GAPI_CampaignMap 
-// $rtaResolver = new resolverSelectInsertUpdate($rta);
+// aca se debe resolver en OpratelConsulta.dbo.GAPI_CampaignDetail 
+// $rtaResolver = new resolverSelectInsertUpdate($rta, 'OpratelConsulta.dbo.GAPI_CampaignDetail');
 // $rtaResolver->runResolver();

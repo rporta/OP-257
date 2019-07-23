@@ -1,7 +1,11 @@
 <?php 
 
+// dependencias:prod
+// require_once '/var/script/googleAds/class/batman.php';
 
-require_once '/var/script/googleAds/class/batman.php';
+// dependencias:local
+require_once __DIR__.'/batman.php';
+
 
 /**
  * Ramiro Portas
@@ -14,8 +18,10 @@ class resolverSelectInsertUpdate extends batman
 	protected $data;
 	protected $destine;
 	protected $logger;
+	protected $case;
+	protected $statusResolver;
 
-	function __construct($data)
+	function __construct($data, $case)
 	{	
 		xbug(__METHOD__);
 		$this->user_b(1); //batman
@@ -25,18 +31,33 @@ class resolverSelectInsertUpdate extends batman
 
 		$this->db = $db;
 		$this->data = $data;
-		$this->destine = "OpratelConsulta.dbo.GAPI_CampaignMap";
+		$this->destine = $case;
 		$this->logger = $logger;
+		$this->case = $case;
+		$this->statusResolver = false;
 	}
 
 	public function runResolver(){
 		xbug(__METHOD__);
-		foreach ($this->data as $d) {
-			if($this->queryCampingById($d)){
-				$this->queryUpdateCamping($d);
-			}else{
-				$this->queryInsertCamping($d);
-			}
+		$this->resolveCase();
+	}
+
+	public function resolveCase(){
+		xbug(__METHOD__);
+		switch ($this->case) {
+			case 'OpratelConsulta.dbo.GAPI_CampaignMap':
+				foreach ($this->data as $d) {
+					if($this->queryCampingById($d)){
+						$this->queryUpdateCamping($d);
+					}else{
+						$this->queryInsertCamping($d);
+					}
+				}
+				$this->statusResolver = true;
+				break;
+			default:
+
+				break;
 		}
 	}
 

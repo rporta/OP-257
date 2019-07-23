@@ -8,20 +8,22 @@
  * @license  http://www.opratel.com Opratel
  * @link     http://www.opratel.com Opratel
  */
-// default
-require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
-require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+// dependencias:prod
+// require_once '/var/www/html/oprafwk/lib/logger/logger.class.php';
+// require_once '/var/www/html/oprafwk/lib/config/configJson.class.php';
+// require_once '/var/www/html/oprafwk/lib/db/db.class.php';
+// require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
+// require_once "/var/script/googleOfflineConvertion/googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoCostOpratel.php";
+// require_once '/var/script/googleAds/class/resolverSelectInsertUpdate.php';
 
-// xbug
-require_once '/var/script/pixelNotification/dev1/utils/xbug/xbug.php';
+// dependencias:local
+require_once __DIR__.'/libOprafwk/logger/logger.class.php';
+require_once __DIR__.'/libOprafwk/config/configJson.class.php';
+require_once __DIR__.'/libOprafwk/db/db.class.php';
 
-// v201806
-require_once "/var/script/googleOfflineConvertion/googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoOpratel.php";
-// db oprafwk
-require_once '/var/www/html/oprafwk/lib/db/db.class.php';
-
-// resolve Select Insert Update on db
-require_once '/var/script/googleAds/class/resolverSelectInsertUpdate.php';
+require_once __DIR__.'/../pixelNotification/dev1/utils/xbug/xbug.php';
+require_once __DIR__.'/../googleads-php-lib/examples/AdWords/v201809/BasicOperations/GetCampaignsInfoOpratel.php';
+require_once __DIR__.'/class/resolverSelectInsertUpdate.php';
 
 use Google\AdsApi\Examples\AdWords\v201809\BasicOperations\GetCampaignsInfoOpratel;
 
@@ -48,7 +50,6 @@ $db = new db(
 
 // ahora se puede usar xbug
 xbug("{$logDate->format('Y-m-d H:i:s')} : getGapiCampaignMap.php");
-
 // $argv[1] : fecha de consuta en format YYYYMMDD, parametro opcional 
 if(!empty($argv[1])){
     // se pasa la fecha por parametro (desde: $argv[1] - P1D, hasta: $argv[1])
@@ -84,6 +85,8 @@ $ClientCustomerId = "713-824-1599";
 $setSelector->setDateRange = [$desde, $hasta];// <- viende de GetCampaignsInfoOpratel.php
 $rta = GetCampaignsInfoOpratel::main($ClientCustomerId, $setSelector);
 
+xbug($rta);
+
 // aca se debe resolver en OpratelConsulta.dbo.GAPI_CampaignMap 
-$rtaResolver = new resolverSelectInsertUpdate($rta);
-$rtaResolver->runResolver();
+// $rtaResolver = new resolverSelectInsertUpdate($rta, 'OpratelConsulta.dbo.GAPI_CampaignMap');
+// $rtaResolver->runResolver();
